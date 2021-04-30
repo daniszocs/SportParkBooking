@@ -30,20 +30,15 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		User user2 = new User("Daniel Szocs", "daniszocs", "adresaMail2@ceva.com", "0763532222",
 				"parola.ta");
 
-//		private String name;
-//		private String userName;
-//		private String emailAddress;
-//		private String phoneNumber;
-//		private String password;
-
 
 		userService.register(user1);
 		userService.register(user2);
 
-//		User testUser = new User();
-//		testUser.setUsername("Sugah");
-//		testUser.setPassword("abcde");
-//		System.out.println("Testing user login: " + userService.login(testUser));
+
+		User testUser = new User();
+		testUser.setUserName("flo");
+		testUser.setPassword("12345f");
+		System.out.println("Testing user login: " + userService.loginUser(testUser));
 
 	}
 
