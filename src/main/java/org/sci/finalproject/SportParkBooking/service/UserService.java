@@ -17,7 +17,7 @@ public class UserService {
     }
     public boolean loginUser(User user){
         User loginUser = userRepo.findByUserName(user.getUserName());
-        userRepo.save(user);
+//        userRepo.save(user);
         if(loginUser == null){
             return false;
 

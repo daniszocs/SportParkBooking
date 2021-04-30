@@ -1,6 +1,8 @@
 package org.sci.finalproject.SportParkBooking;
 
+import org.sci.finalproject.SportParkBooking.model.Sport;
 import org.sci.finalproject.SportParkBooking.model.User;
+import org.sci.finalproject.SportParkBooking.service.SportService;
 import org.sci.finalproject.SportParkBooking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SportParkBookingApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
+	private SportService sportService;
 
 	public static void main(String[] args) {
 
@@ -29,7 +32,7 @@ public class SportParkBookingApplication implements CommandLineRunner {
 				"parola.mea");
 		User user2 = new User("Daniel Szocs", "daniszocs", "adresaMail2@ceva.com", "0763532222",
 				"parola.ta");
-
+		Sport football = new Sport("Football");
 
 		userService.register(user1);
 		userService.register(user2);
@@ -40,6 +43,7 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		testUser.setPassword("12345f");
 		System.out.println("Testing user login: " + userService.loginUser(testUser));
 
+		sportService.registerSport(football);
 	}
 
 
