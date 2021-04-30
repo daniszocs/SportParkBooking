@@ -14,6 +14,10 @@ public class SportService {
         sportRepo.save(sport);
 //        LOGGER.info("User has been registered");
     }
+
+    public long returnSportId(String sportName){
+        return sportRepo.findBySportID(sportName).getSportID();
+    }
 }
 
 

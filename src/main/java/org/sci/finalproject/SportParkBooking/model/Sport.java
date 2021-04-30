@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Sport {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long sportID;
     private String sportName;
 

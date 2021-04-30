@@ -11,7 +11,7 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public void register(User user) {
+    public void registerUser(User user) {
         userRepo.save(user);
 //        LOGGER.info("User has been registered");
     }
