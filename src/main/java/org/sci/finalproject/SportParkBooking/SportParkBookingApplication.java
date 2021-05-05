@@ -10,6 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.Date;
+import java.sql.Time;
+
 @SpringBootApplication
 public class SportParkBookingApplication implements CommandLineRunner {
 	@Autowired
@@ -34,28 +37,67 @@ public class SportParkBookingApplication implements CommandLineRunner {
 	}
 
 	private void actualRun() {
-		User user1 = new User("Ioan Farcas", "nelutufarcas", "adresaMail@ceva.com", "0763532299",
-				"parola.mea");
-		User user2 = new User("Daniel Szocs", "daniszocs", "adresaMail2@ceva.com", "0763532222",
-				"parola.ta");
+		/*This should be taken from Web Interface*/
+		//****************************************
+		String name = "Ioan Farcas";
+		String userName = "nelutufarcas";
+		String emailAddress = "eMailAddress@nelutu.ro";
+		String phoneNumber = "0763532299";
+		String password = "parola.nelutu";
+		//************************************************************************
+		User newUser = new User(name, userName, emailAddress, phoneNumber, password);
+		userService.registerUser(newUser);
+		
+		/**This should be taken from Web Interface*/
+		//****************************************
+		 name = "Daniel Szocs";
+		 userName = "danielszocs";
+		 emailAddress = "eMailAddress@daniel.ro";
+		 phoneNumber = "0761222222";
+		 password = "parola.daniel";
+		//************************************************************************
+		newUser = new User(name, userName, emailAddress, phoneNumber, password);
+		userService.registerUser(newUser);
 
-		Sport football = new Sport("Football");
-		Sport tennis = new Sport("Tennis");
+		/*sportName should be taken from Web Interface*/
+		String  sportName = "Football";
+		Sport newSport = new Sport(sportName);
+		sportService.registerSport(newSport);
 
-		/*long sportId = sportService.returnSportId("Football"); */
-		/**
-		 * @brief Cautarea sportID in table Sport da eroare; Probabil pentru ca
-		 * la acest moment JAVA nu vede ce s-a adaugat in table. Trebuie sa intrebam...
-		 */
-		PlayGround playGround1 = new PlayGround("FootballField1",3, 100 );
-		PlayGround playGround2 = new PlayGround("FootballField2",3, 80 );
+		/*sportName should be taken from Web Interface*/
+		sportName = "Tennis";
+		newSport = new Sport(sportName);
+		sportService.registerSport(newSport);
 
-//		sportId = sportService.returnSportId("Tennis");
-		PlayGround playGround3 = new PlayGround("TennisField1",4, 50 );
+		/**following data should be taken from Web Interface*/
+		//*************************************************
+		String playGroundName = "FootballField1";
+		sportName = "Football";
+		int pricePerHour = 100;
+		//*******************************************************************************
+		Long sportId = sportService.returnSportId(sportName);
+		PlayGround newPlayGround = new PlayGround(playGroundName, sportId, pricePerHour );
+		playGroundService.registerPlayGround(newPlayGround);
 
+		/**following data should be taken from Web Interface*/
+		//*************************************************
+		playGroundName = "FootballField2";
+		sportName = "Football";
+		pricePerHour = 80;
+		//*******************************************************************************
+		sportId = sportService.returnSportId(sportName);
+		newPlayGround = new PlayGround(playGroundName, sportId, pricePerHour );
+		playGroundService.registerPlayGround(newPlayGround);
 
-		userService.registerUser(user1);
-		userService.registerUser(user2);
+		/**following data should be taken from Web Interface*/
+		//*************************************************
+		playGroundName = "TennisField1";
+		sportName = "Tennis";
+		pricePerHour = 50;
+		//*******************************************************************************
+		sportId = sportService.returnSportId(sportName);
+		newPlayGround = new PlayGround(playGroundName, sportId, pricePerHour );
+		playGroundService.registerPlayGround(newPlayGround);
 
 
 //		User testUser = new User();
@@ -63,22 +105,37 @@ public class SportParkBookingApplication implements CommandLineRunner {
 //		testUser.setPassword("12345f");
 //		System.out.println("Testing user login: " + userService.loginUser(testUser));
 
-		sportService.registerSport(football);
-		sportService.registerSport(tennis);
 
-		playGroundService.registerPlayGround(playGround1);
-		playGroundService.registerPlayGround(playGround2);
-		playGroundService.registerPlayGround(playGround3);
+		/**@brief: following should be taken from Web Interface*/
+		 //BEGIN ********************************************************
+		Date bDate = Date.valueOf("2021-05-05");
+		Time bTime = Time.valueOf("21:00:00");
+		userName = "nelutufarcas";
+		playGroundName = "FootballField1"/*should get value from Web Interface*/;
+		int bookingDuration = 1;
+		// END ******************************************************************************
+		Long userID = userService.returnUserID(userName);
+		Long playGroundID = playGroundService.returnPlayGroundID(playGroundName);
+		/*calculate based on bookingDuration and pricePerHour*/
+		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
 
-		/**
-		 * @brief: Before creating of newBooking:
-		 *         bookingTotalPrice - should be calculated based on chosen bookingDuration and playGround
-		 *         userID / playGroundID should be "find..." based on logged userName / chosen playGround
-		 */
+		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+		bookingService.saveNewBooking(newBooking);
 
-		Booking newBooking = new Booking("01/05/2021", "18:00", 1,
-										 50, 2, 3, BookingStatusEnum.ACTIVE);
+		/**@brief: following should be taken from Web Interface*/
+		//BEGIN ********************************************************
+		bDate = Date.valueOf("2021-05-08");
+		bTime = Time.valueOf("20:00:00");
+		userName = "danielszocs";
+		playGroundName = "TennisField1";
+		bookingDuration = 2;
+		//END ********************************************************
+		userID = userService.returnUserID(userName);
+		playGroundID = playGroundService.returnPlayGroundID(playGroundName);
+		/*calculate based on bookingDuration and pricePerHour*/
+		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
 
+		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 		bookingService.saveNewBooking(newBooking);
 	}
 

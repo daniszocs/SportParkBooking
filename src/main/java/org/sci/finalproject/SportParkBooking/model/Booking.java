@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.util.Date;
 
 @Entity
 public class Booking {
@@ -14,9 +16,9 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO )
     private long BookingID;
     private Date bookingDate;
-    private Date bookingHour;
+    private Time bookingHour;
     /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
-    private int  bookingDuration;
+    private int bookingDuration;
     private int  bookingTotalPrice;
     private long userID;
     private long playGroundID;
@@ -25,15 +27,9 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String bookingDate, String bookingHour, int bookingDuration, int bookingTotalPrice,
-                   long userID, long playGroundID, BookingStatusEnum bookingStatus) {
-        try {
-            String fullDate = bookingDate + " " + bookingHour;
-            this.bookingDate = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(fullDate/*bookingDate*/);
-            this.bookingHour = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(fullDate/*bookingHour*/);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public Booking(Date bookingDate, Time bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+        this.bookingDate = bookingDate;
+        this.bookingHour = bookingHour;
         this.bookingDuration = bookingDuration;
         this.bookingTotalPrice = bookingTotalPrice;
         this.userID = userID;
@@ -49,61 +45,31 @@ public class Booking {
         BookingID = bookingID;
     }
 
-    public Date getBookingDate() {
-        return bookingDate;
-        /*When used: extract "dd/MM/yyyy" from bookingDate and stored to a String var...*/
-    }
+    public Date getBookingDate() {  return bookingDate;  }
 
-    public void setBookingDate(Date bookingDate) {
-        this.bookingDate = bookingDate;
-    }
+    public void setBookingDate(Date bookingDate) {  this.bookingDate = bookingDate;  }
 
-    public Date getBookingHour() {
-        return bookingHour;
-        /*When used: extract "hh:mm" from bookingHour and stored to a String var...*/
-    }
+    public Time getBookingHour() { return bookingHour;  }
 
-    public void setBookingHour(Date bookingHour) {
-        this.bookingHour = bookingHour;
-    }
+    public void setBookingHour(Time bookingHour) { this.bookingHour = bookingHour;  }
 
-    public int getBookingDuration() {
-        return bookingDuration;
-    }
+    public int getBookingDuration() {  return bookingDuration;  }
 
-    public void setBookingDuration(int bookingDuration) {
-        this.bookingDuration = bookingDuration;
-    }
+    public void setBookingDuration(int bookingDuration) { this.bookingDuration = bookingDuration; }
 
-    public int getBookingTotalPrice() {
-        return bookingTotalPrice;
-    }
+    public int getBookingTotalPrice() { return bookingTotalPrice;  }
 
-    public void setBookingTotalPrice(int bookingTotalPrice) {
-        this.bookingTotalPrice = bookingTotalPrice;
-    }
+    public void setBookingTotalPrice(int bookingTotalPrice) { this.bookingTotalPrice = bookingTotalPrice; }
 
-    public long getUserID() {
-        return userID;
-    }
+    public long getUserID() {  return userID;  }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
-    }
+    public void setUserID(long userID) {  this.userID = userID;  }
 
-    public long getPlayGroundID() {
-        return playGroundID;
-    }
+    public long getPlayGroundID() { return playGroundID;  }
 
-    public void setPlayGroundID(long playGroundID) {
-        this.playGroundID = playGroundID;
-    }
+    public void setPlayGroundID(long playGroundID) { this.playGroundID = playGroundID; }
 
-    public BookingStatusEnum getBookingStatus() {
-        return bookingStatus;
-    }
+    public BookingStatusEnum getBookingStatus() { return bookingStatus;  }
 
-    public void setBookingStatus(BookingStatusEnum bookingStatus) {
-        this.bookingStatus = bookingStatus;
-    }
+    public void setBookingStatus(BookingStatusEnum bookingStatus) { this.bookingStatus = bookingStatus; }
 }

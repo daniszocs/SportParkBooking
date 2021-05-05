@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SportRepo extends CrudRepository<Sport, Long> {
-    public Sport findBySportID(String sportName);
+    public Sport findBySportID(Long sportID);
+    public Sport findBySportName(String sportName);
 }

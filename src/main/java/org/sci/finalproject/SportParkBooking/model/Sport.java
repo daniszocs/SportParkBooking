@@ -34,4 +34,5 @@ public class Sport {
     public void setSportName(String sportName) {
         this.sportName = sportName;
     }
+
 }

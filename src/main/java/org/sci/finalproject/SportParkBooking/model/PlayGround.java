@@ -54,4 +54,5 @@ public class PlayGround {
     public void setPricePerHour(int pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
+
 }

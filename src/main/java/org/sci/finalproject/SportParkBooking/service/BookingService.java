@@ -1,6 +1,7 @@
 package org.sci.finalproject.SportParkBooking.service;
 
 import org.sci.finalproject.SportParkBooking.model.Booking;
+import org.sci.finalproject.SportParkBooking.model.BookingStatusEnum;
 import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,9 @@ public class BookingService {
 
     public void saveNewBooking(Booking newBooking) {
 
-        /*newBooking must pe configured before call of saveNewBooking call
-         (IDs, totalPrice based on logged user and chosen playGround*/
         bookingRepo.save(newBooking);
 //        LOGGER.info("User has been registered");
     }
+
+    public void updateBookingStatus(BookingStatusEnum bookingStatus){}
 }

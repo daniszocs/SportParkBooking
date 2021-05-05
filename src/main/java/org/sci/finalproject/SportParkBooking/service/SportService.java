@@ -15,8 +15,8 @@ public class SportService {
 //        LOGGER.info("User has been registered");
     }
 
-    public long returnSportId(String sportName){
-        return sportRepo.findBySportID(sportName).getSportID();
+    public Long returnSportId(String sportName){
+        return sportRepo.findBySportName(sportName).getSportID();
     }
 }
 

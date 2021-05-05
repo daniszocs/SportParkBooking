@@ -41,9 +41,15 @@ public class UserService {
         }
         return false;
     }
+
     public void deleteAccount(User userToDelete){
         userRepo.delete(userToDelete);
 
     }
+
+    public Long returnUserID(String userName){
+        return userRepo.findByUserName(userName).getUserID();
+    }
+
 
 }
