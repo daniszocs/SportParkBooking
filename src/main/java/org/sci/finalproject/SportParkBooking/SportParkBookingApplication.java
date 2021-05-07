@@ -16,11 +16,11 @@ import java.sql.Time;
 @SpringBootApplication
 public class SportParkBookingApplication implements CommandLineRunner {
 	@Autowired
-	private UserService userService;
-	@Autowired
 	private SportService sportService;
 	@Autowired
 	private PlayGroundService playGroundService;
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private BookingService bookingService;
 
@@ -37,7 +37,8 @@ public class SportParkBookingApplication implements CommandLineRunner {
 	}
 
 	private void actualRun() {
-		/*This should be taken from Web Interface*/
+
+		/**This should be taken from Web Interface*/
 		//****************************************
 		String name = "Ioan Farcas";
 		String userName = "nelutufarcas";
@@ -47,27 +48,29 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		//************************************************************************
 		User newUser = new User(name, userName, emailAddress, phoneNumber, password);
 		userService.registerUser(newUser);
-		
+
 		/**This should be taken from Web Interface*/
 		//****************************************
-		 name = "Daniel Szocs";
-		 userName = "danielszocs";
-		 emailAddress = "eMailAddress@daniel.ro";
-		 phoneNumber = "0761222222";
-		 password = "parola.daniel";
+		name = "Daniel Szocs";
+		userName = "danielszocs";
+		emailAddress = "eMailAddress@daniel.ro";
+		phoneNumber = "0761222222";
+		password = "parola.daniel";
 		//************************************************************************
 		newUser = new User(name, userName, emailAddress, phoneNumber, password);
 		userService.registerUser(newUser);
 
-		/*sportName should be taken from Web Interface*/
+
+		/**sportName should be taken from Web Interface*/
 		String  sportName = "Football";
 		Sport newSport = new Sport(sportName);
 		sportService.registerSport(newSport);
 
-		/*sportName should be taken from Web Interface*/
+		/**sportName should be taken from Web Interface*/
 		sportName = "Tennis";
 		newSport = new Sport(sportName);
 		sportService.registerSport(newSport);
+
 
 		/**following data should be taken from Web Interface*/
 		//*************************************************
@@ -100,26 +103,21 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		playGroundService.registerPlayGround(newPlayGround);
 
 
-//		User testUser = new User();
-//		testUser.setUserName("flo");
-//		testUser.setPassword("12345f");
-//		System.out.println("Testing user login: " + userService.loginUser(testUser));
-
-
 		/**@brief: following should be taken from Web Interface*/
-		 //BEGIN ********************************************************
+		//BEGIN ********************************************************
 		Date bDate = Date.valueOf("2021-05-05");
 		Time bTime = Time.valueOf("21:00:00");
 		userName = "nelutufarcas";
 		playGroundName = "FootballField1"/*should get value from Web Interface*/;
-		int bookingDuration = 1;
+//		int bookingDuration = 1;
 		// END ******************************************************************************
 		Long userID = userService.returnUserID(userName);
 		Long playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 		/*calculate based on bookingDuration and pricePerHour*/
-		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-
-		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+		int bookingPrice = playGroundService.returnPricePerHour(playGroundName);
+		Booking newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 		bookingService.saveNewBooking(newBooking);
 
 		/**@brief: following should be taken from Web Interface*/
@@ -128,15 +126,41 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		bTime = Time.valueOf("20:00:00");
 		userName = "danielszocs";
 		playGroundName = "TennisField1";
-		bookingDuration = 2;
+//		bookingDuration = 2;
 		//END ********************************************************
 		userID = userService.returnUserID(userName);
 		playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 		/*calculate based on bookingDuration and pricePerHour*/
-		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-
-		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+		bookingPrice = playGroundService.returnPricePerHour(playGroundName);
+		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 		bookingService.saveNewBooking(newBooking);
+
+
+		/**@brief: following should be taken from Web Interface*/
+		//BEGIN ********************************************************
+		bDate = Date.valueOf("2021-05-08");
+		bTime = Time.valueOf("20:00:00");
+		userName = "danielszocs";
+		playGroundName = "TennisField1";
+//		bookingDuration = 2;
+		//END ********************************************************
+		userID = userService.returnUserID(userName);
+		playGroundID = playGroundService.returnPlayGroundID(playGroundName);
+		/*calculate based on bookingDuration and pricePerHour*/
+//		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+		bookingPrice = playGroundService.returnPricePerHour(playGroundName);
+		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.CANCEL);
+		bookingService.saveNewBooking(newBooking);
+
+//		User testUser = new User();
+//		testUser.setUserName("flo");
+//		testUser.setPassword("12345f");
+//		System.out.println("Testing user login: " + userService.loginUser(testUser));
+
+
 	}
 
 

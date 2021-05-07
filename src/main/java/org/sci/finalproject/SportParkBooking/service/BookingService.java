@@ -6,15 +6,19 @@ import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class BookingService {
 
     @Autowired
     private BookingRepo bookingRepo;
 
-    public void saveNewBooking(Booking newBooking) {
+    public void saveNewBooking(Booking newBooking){
+        Booking foundBookingSignature = bookingRepo.findByBookingSignature(newBooking.getBookingSignature());
+        if (foundBookingSignature==null){
+            bookingRepo.save(newBooking);
+        }
 
-        bookingRepo.save(newBooking);
 //        LOGGER.info("User has been registered");
     }
 

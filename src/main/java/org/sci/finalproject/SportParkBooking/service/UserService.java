@@ -12,9 +12,17 @@ public class UserService {
     private UserRepo userRepo;
 
     public void registerUser(User user) {
+        User foundUser = userRepo.findByUserName(user.getUserName());
+        if (foundUser==null){
         userRepo.save(user);
+        }
 //        LOGGER.info("User has been registered");
     }
+
+    public Long returnUserID(String userName){
+        return userRepo.findByUserName(userName).getUserID();
+    }
+
     public boolean loginUser(User user){
         User loginUser = userRepo.findByUserName(user.getUserName());
 //        userRepo.save(user);
@@ -46,10 +54,5 @@ public class UserService {
         userRepo.delete(userToDelete);
 
     }
-
-    public Long returnUserID(String userName){
-        return userRepo.findByUserName(userName).getUserID();
-    }
-
 
 }
