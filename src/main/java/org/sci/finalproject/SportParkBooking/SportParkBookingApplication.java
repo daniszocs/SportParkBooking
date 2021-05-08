@@ -105,8 +105,8 @@ public class SportParkBookingApplication implements CommandLineRunner {
 
 		/**@brief: following should be taken from Web Interface*/
 		//BEGIN ********************************************************
-		Date bDate = Date.valueOf("2022-06-06");
-		Time bTime = Time.valueOf("22:22:22");
+		Date bDate = Date.valueOf("2021-05-05");
+		Time bTime = Time.valueOf("21:00:00");
 		userName = "nelutufarcas";
 		playGroundName = "FootballField2"/*should get value from Web Interface*/;
 //		int bookingDuration = 1;
