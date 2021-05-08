@@ -1,5 +1,7 @@
 package org.sci.finalproject.SportParkBooking.model;
 
+import org.sci.finalproject.SportParkBooking.service.BookingService;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,9 +39,6 @@ public class Booking {
         this.userID = userID;
         this.playGroundID = playGroundID;
         this.bookingStatus = bookingStatus;
-
-        DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-        this.bookingSignature = df.format(bookingDate) + bookingHour + playGroundID;
     }
 
     public long getBookingID() {
@@ -62,9 +61,9 @@ public class Booking {
 //
 //    public void setBookingDuration(int bookingDuration) { this.bookingDuration = bookingDuration; }
 
-    public int getBookingTotalPrice() { return bookingPrice;  }
+    public int getBookingPrice() { return bookingPrice;  }
 
-    public void setBookingTotalPrice(int bookingTotalPrice) { this.bookingPrice = bookingTotalPrice; }
+    public void setBookingPrice(int bookingPrice) { this.bookingPrice = bookingPrice; }
 
     public long getUserID() {  return userID;  }
 
@@ -80,5 +79,9 @@ public class Booking {
 
     public String getBookingSignature() {
         return bookingSignature;
+    }
+
+    public void setBookingSignature(String bookingSignature) {
+        this.bookingSignature = bookingSignature;
     }
 }

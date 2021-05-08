@@ -105,10 +105,10 @@ public class SportParkBookingApplication implements CommandLineRunner {
 
 		/**@brief: following should be taken from Web Interface*/
 		//BEGIN ********************************************************
-		Date bDate = Date.valueOf("2021-05-05");
-		Time bTime = Time.valueOf("21:00:00");
+		Date bDate = Date.valueOf("2022-06-06");
+		Time bTime = Time.valueOf("22:22:22");
 		userName = "nelutufarcas";
-		playGroundName = "FootballField1"/*should get value from Web Interface*/;
+		playGroundName = "FootballField2"/*should get value from Web Interface*/;
 //		int bookingDuration = 1;
 		// END ******************************************************************************
 		Long userID = userService.returnUserID(userName);
@@ -137,12 +137,14 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 		bookingService.saveNewBooking(newBooking);
 
-
+		//booking status enum = CANCEL, not ACTIVE
+		//should not be added to db
+		//because booking signature already exists
 		/**@brief: following should be taken from Web Interface*/
 		//BEGIN ********************************************************
 		bDate = Date.valueOf("2021-05-08");
 		bTime = Time.valueOf("20:00:00");
-		userName = "danielszocs";
+		userName = "nelutufarcas";
 		playGroundName = "TennisField1";
 //		bookingDuration = 2;
 		//END ********************************************************
@@ -154,6 +156,23 @@ public class SportParkBookingApplication implements CommandLineRunner {
 		bookingPrice = playGroundService.returnPricePerHour(playGroundName);
 		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.CANCEL);
 		bookingService.saveNewBooking(newBooking);
+
+//		/**@brief: following should be taken from Web Interface*/
+//		//BEGIN ********************************************************
+//		Date bDate = Date.valueOf("2022-06-06");
+//		Time bTime = Time.valueOf("22:22:22");
+//		userName = "nelutufarcas";
+//		playGroundName = "FootballField2"/*should get value from Web Interface*/;
+////		int bookingDuration = 1;
+//		// END ******************************************************************************
+//		Long userID = userService.returnUserID(userName);
+//		Long playGroundID = playGroundService.returnPlayGroundID(playGroundName);
+//		/*calculate based on bookingDuration and pricePerHour*/
+////		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+////		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		int bookingPrice = playGroundService.returnPricePerHour(playGroundName);
+//		Booking newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		bookingService.saveNewBooking(newBooking);
 
 //		User testUser = new User();
 //		testUser.setUserName("flo");
