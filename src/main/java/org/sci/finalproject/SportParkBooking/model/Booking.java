@@ -1,22 +1,18 @@
 package org.sci.finalproject.SportParkBooking.model;
 
-import org.sci.finalproject.SportParkBooking.service.BookingService;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 //import java.util.Date;
 
 @Entity
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    private long BookingID;
+    private long bookingID;
     private Date bookingDate;
     private Time bookingHour;
     /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
@@ -42,11 +38,11 @@ public class Booking {
     }
 
     public long getBookingID() {
-        return BookingID;
+        return bookingID;
     }
 
     public void setBookingID(long bookingID) {
-        BookingID = bookingID;
+        this.bookingID = bookingID;
     }
 
     public Date getBookingDate() {  return bookingDate;  }

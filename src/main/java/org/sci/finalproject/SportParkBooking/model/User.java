@@ -10,8 +10,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Long userID;
-    private String name;
     private String userName;
+    private String name;
     private String emailAddress;
     private String phoneNumber;
     private String password;
@@ -20,8 +20,8 @@ public class User {
     }
 
     public User(String name, String userName, String emailAddress, String phoneNumber, String password) {
-        this.name = name;
         this.userName = userName;
+        this.name = name;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.password = password;
@@ -35,20 +35,20 @@ public class User {
         this.userID = userID;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmailAddress() {
