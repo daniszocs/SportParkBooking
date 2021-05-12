@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<div class="myClass">Hello, sportivi!</div>
+
+<h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
+
+<table style="border: 1px solid red">
+    <tbody>
+    <tr th:each="user: ${myUsersList}">
+        <td th:if="${user.userName == 'danielszocs'}" th:text="me" />
+        <td th:unless="${user.userName == 'danielszocs'}" th:text="${user.userName}" />
+        <td th:text="${user.userEmail}" />
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+</body>
+</html>
