@@ -16,7 +16,7 @@ public class Booking {
     private Date bookingDate;
     private Time bookingHour;
     /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
-//    private int bookingDuration;
+    private int bookingDuration;
     private int  bookingPrice;
     private long userID;
     private long playGroundID;
@@ -26,11 +26,11 @@ public class Booking {
     public Booking() {
     }
 
-//    public Booking(Date bookingDate, Time bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
-    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+    public Booking(Date bookingDate, Time bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+//    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
             this.bookingDate = bookingDate;
         this.bookingHour = bookingHour;
-//        this.bookingDuration = bookingDuration;
+        this.bookingDuration = bookingDuration;
         this.bookingPrice = bookingPrice;
         this.userID = userID;
         this.playGroundID = playGroundID;
@@ -53,9 +53,9 @@ public class Booking {
 
     public void setBookingHour(Time bookingHour) { this.bookingHour = bookingHour;  }
 
-//    public int getBookingDuration() {  return bookingDuration;  }
-//
-//    public void setBookingDuration(int bookingDuration) { this.bookingDuration = bookingDuration; }
+    public int getBookingDuration() {  return bookingDuration;  }
+
+    public void setBookingDuration(int bookingDuration) { this.bookingDuration = bookingDuration; }
 
     public int getBookingPrice() { return bookingPrice;  }
 

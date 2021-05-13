@@ -109,13 +109,13 @@ public class SportParkBookingApplication implements CommandLineRunner {
 //		Time bTime = Time.valueOf("21:00:00");
 //		userName = "nelutufarcas";
 //		playGroundName = "FootballField2"/*should get value from Web Interface*/;
-////		int bookingDuration = 1;
+//		int bookingDuration = 1;
 //		// END ******************************************************************************
 //		Long userID = userService.returnUserID(userName);
 //		Long playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 //		/*calculate based on bookingDuration and pricePerHour*/
-////		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-////		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		int bookingPrice = playGroundService.returnPricePerHour(playGroundName);
 //		Booking newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		bookingService.saveNewBooking(newBooking);
@@ -126,13 +126,13 @@ public class SportParkBookingApplication implements CommandLineRunner {
 //		bTime = Time.valueOf("20:00:00");
 //		userName = "danielszocs";
 //		playGroundName = "TennisField1";
-////		bookingDuration = 2;
+//		bookingDuration = 2;
 //		//END ********************************************************
 //		userID = userService.returnUserID(userName);
 //		playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 //		/*calculate based on bookingDuration and pricePerHour*/
-////		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-////		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		bookingPrice = playGroundService.returnPricePerHour(playGroundName);
 //		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		bookingService.saveNewBooking(newBooking);
@@ -146,13 +146,13 @@ public class SportParkBookingApplication implements CommandLineRunner {
 //		bTime = Time.valueOf("20:00:00");
 //		userName = "nelutufarcas";
 //		playGroundName = "TennisField1";
-////		bookingDuration = 2;
+//		bookingDuration = 2;
 //		//END ********************************************************
 //		userID = userService.returnUserID(userName);
 //		playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 //		/*calculate based on bookingDuration and pricePerHour*/
-////		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-////		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		bookingPrice = playGroundService.returnPricePerHour(playGroundName);
 //		newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.CANCEL);
 //		bookingService.saveNewBooking(newBooking);
@@ -163,13 +163,13 @@ public class SportParkBookingApplication implements CommandLineRunner {
 //		Time bTime = Time.valueOf("22:22:22");
 //		userName = "nelutufarcas";
 //		playGroundName = "FootballField2"/*should get value from Web Interface*/;
-////		int bookingDuration = 1;
+//		int bookingDuration = 1;
 //		// END ******************************************************************************
 //		Long userID = userService.returnUserID(userName);
 //		Long playGroundID = playGroundService.returnPlayGroundID(playGroundName);
 //		/*calculate based on bookingDuration and pricePerHour*/
-////		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
-////		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
+//		int bookingTotalPrice = bookingDuration * playGroundService.returnPricePerHour(playGroundName);
+//		Booking newBooking = new Booking(bDate, bTime, bookingDuration, bookingTotalPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		int bookingPrice = playGroundService.returnPricePerHour(playGroundName);
 //		Booking newBooking = new Booking(bDate, bTime, bookingPrice, userID, playGroundID, BookingStatusEnum.ACTIVE);
 //		bookingService.saveNewBooking(newBooking);

@@ -11,21 +11,38 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public void register(User user) {
+    public boolean register(User user) {
         User foundUser = userRepo.findByUserName(user.getUserName());
         if (foundUser==null){
         userRepo.save(user);
+            return true;
         }
+        return false;
 //        LOGGER.info("User has been registered");
     }
 
+    public boolean updateUser(User oldUser, User newUser) {
+        User foundUser = userRepo.findByUserEmail(oldUser.getUserEmail());
+        if (newUser.getUserName().equals(foundUser.getUserName())) {
+            userRepo.delete(oldUser);
+            userRepo.save(newUser);
+            return true;
+        }
+        return false;
+    }
+
+    public void deleteAccount(User userToDelete){
+        userRepo.delete(userToDelete);
+
+    }
+
     public boolean login(User user) {
-        User loginUser = userRepo.findByUserEmail(user.getUserEmail());
-        if (loginUser == null) {
+        User foundUser = userRepo.findByUserEmail(user.getUserEmail());
+        if (foundUser == null) {
             //LOGGER.info("User has not been found");
             return false;
         }
-        if (user.getUserPassword().equals(loginUser.getUserPassword())) {
+        if (user.getUserPassword().equals(foundUser.getUserPassword())) {
             //LOGGER.info("User has been logged in");
             return true;
         }
@@ -54,19 +71,5 @@ public class UserService {
 //    }
 //    //LOGGER.error("User has not been found");
 
-    public boolean updateUser(User oldUser, User newUser) {
-        User foundUser = userRepo.findByUserName(oldUser.getUserName());
-        if (newUser.getUserName().equals(foundUser.getUserName())) {
-            userRepo.delete(oldUser);
-            userRepo.save(newUser);
-            return true;
-        }
-        return false;
-    }
-
-    public void deleteAccount(User userToDelete){
-        userRepo.delete(userToDelete);
-
-    }
 
 }

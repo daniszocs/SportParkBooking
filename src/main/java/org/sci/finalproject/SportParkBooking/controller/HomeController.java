@@ -16,16 +16,33 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+
     @RequestMapping("/home")
     public String myIndexPage() {
         return "index";
     }
+
+    @RequestMapping("/")
+    public String myDefaultPage() {
+        return this.myIndexPage();
+    }
+
 
     @RequestMapping("/register")
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
         return "register";
+    }
+
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    public String registerUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
+        boolean registerResult = userService.register(user);
+        if (registerResult) {
+            return hello(model, user.getUserName());
+        } else {
+            return "error";
+        }
     }
 
 
@@ -36,21 +53,14 @@ public class HomeController {
         return "login";
     }
 
-
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public String loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
-        // logic to process input data
         boolean loginResult = userService.login(user);
         if (loginResult) {
             return hello(model, user.getUserEmail());
         } else {
             return "error";
         }
-    }
-
-    @RequestMapping("/")
-    public String myDefaultPage() {
-        return this.myIndexPage();
     }
 
 
@@ -62,6 +72,7 @@ public class HomeController {
         return "index";
     }
 
+
     @GetMapping({"/test"})
     public String test(Model model, @RequestParam(value="name", required=false) String name) {
         // http://localhost:8080/hello?name=maki
@@ -71,26 +82,26 @@ public class HomeController {
         User user1 = new User("Ioan Farcas", "nelutufarcas", "eMailAddress@nelutu.ro", "0763532299", "parola.nelutu");
         User user2 = new User("Daniel Szocs", "daniszocs", "eMailAddress@dani.ro", "0755001122", "parola.dani");
         User user3 = new User("Luminita Daraban", "lumidaraban", "eMailAddress@luminita.ro", "0743201345", "parola.luminita");
+        User user4 = new User("Alex Blidar", "alexblidar", "eMailAddress@alex.ro", "0712212121", "parola.alex");
+        User user5 = new User("Florina Morari", "florinamorari", "eMailAddress@florina.ro", "0701100110", "parola.florina");
 
 
         userService.register(user1);
         userService.register(user2);
         userService.register(user3);
+        userService.register(user4);
+        userService.register(user5);
 
 
         List<User> usersList = new ArrayList<>();
         usersList.add(user1);
         usersList.add(user2);
         usersList.add(user3);
+        usersList.add(user4);
+        usersList.add(user5);
 
         model.addAttribute("myUsersList", usersList);
         return "index";
     }
 
-    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
-        // logic to process input data
-        userService.register(user);
-        return "saveUser";
-    }
 }
