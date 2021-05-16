@@ -28,7 +28,7 @@ public class Booking {
 
     public Booking(Date bookingDate, Time bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
 //    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
-            this.bookingDate = bookingDate;
+        this.bookingDate = bookingDate;
         this.bookingHour = bookingHour;
         this.bookingDuration = bookingDuration;
         this.bookingPrice = bookingPrice;

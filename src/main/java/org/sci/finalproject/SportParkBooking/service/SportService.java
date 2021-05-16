@@ -1,7 +1,6 @@
 package org.sci.finalproject.SportParkBooking.service;
 
 import org.sci.finalproject.SportParkBooking.model.Sport;
-import org.sci.finalproject.SportParkBooking.model.User;
 import org.sci.finalproject.SportParkBooking.repo.SportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +11,14 @@ public class SportService {
     @Autowired
     private SportRepo sportRepo;
 
-    public void registerSport(Sport sport) {
+    public boolean register(Sport sport) {
         Sport foundSport = sportRepo.findBySportName(sport.getSportName());
         if (foundSport==null){
-        sportRepo.save(sport);
+            sportRepo.save(sport);
+            return true;
         }
-//        LOGGER.info("User has been registered");
+        return false;
+//        LOGGER.info("Sport has been registered");
     }
 
     public Long returnSportId(String sportName){

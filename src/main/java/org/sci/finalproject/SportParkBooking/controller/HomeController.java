@@ -102,6 +102,8 @@ public class HomeController {
 
         model.addAttribute("myUsersList", usersList);
         return "index";
+
+
     }
 
 }

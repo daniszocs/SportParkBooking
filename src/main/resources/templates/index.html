@@ -14,8 +14,8 @@
 <table style="border: 1px solid red">
     <tbody>
     <tr th:each="user: ${myUsersList}">
-        <td th:if="${user.userName == 'danielszocs'}" th:text="me" />
-        <td th:unless="${user.userName == 'danielszocs'}" th:text="${user.userName}" />
+        <td th:if="${user.userName == 'daniszocs'}" th:text="me" />
+        <td th:unless="${user.userName == 'daniszocs'}" th:text="${user.userName}" />
         <td th:text="${user.userEmail}" />
     </tr>
     </tbody>
