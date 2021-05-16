@@ -5,8 +5,6 @@ import org.sci.finalproject.SportParkBooking.repo.SportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SportService {
 

@@ -54,22 +54,4 @@ public class UserService {
         return userRepo.findByUserName(userName).getUserID();
     }
 
-//    public boolean loginUser(User user){
-//        User loginUser = userRepo.findByUserName(user.getUserName());
-////        userRepo.save(user);
-//        if(loginUser == null){
-//            return false;
-//
-//        }
-//        if (user.getUserPassword().equals(loginUser.getUserPassword())){
-//
-//            return true;
-//        }
-//
-//        return false;
-//
-//    }
-//    //LOGGER.error("User has not been found");
-
-
 }

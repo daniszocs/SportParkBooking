@@ -1,8 +1,6 @@
 package org.sci.finalproject.SportParkBooking.service;
 
 import org.sci.finalproject.SportParkBooking.model.PlayGround;
-import org.sci.finalproject.SportParkBooking.model.Sport;
-import org.sci.finalproject.SportParkBooking.model.User;
 import org.sci.finalproject.SportParkBooking.repo.PlayGroundRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,7 @@ public class PlayGroundService {
     @Autowired
     private PlayGroundRepo playGroundRepo;
 
-    public void registerPlayGround(PlayGround playGround) {
+    public void register(PlayGround playGround) {
         PlayGround foundPlayGround = playGroundRepo.findByPlayGroundName(playGround.getPlayGroundName());
         if (foundPlayGround==null){
             playGroundRepo.save(playGround);
@@ -46,4 +44,7 @@ public class PlayGroundService {
 
     }
 
+    public Iterable<PlayGround> findAll() {
+        return playGroundRepo.findAll();
+    }
 }
