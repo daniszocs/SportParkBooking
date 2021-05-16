@@ -39,10 +39,16 @@ public class UserController {
     public String registerUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
         boolean registerResult = userService.register(user);
         if (registerResult) {
-            return hello(model, user.getUserName());
+            return confirmRegister(model, user.getUserName());
         } else {
             return "error";
         }
+    }
+
+    @GetMapping({"/confirmRegister"})
+    public String confirmRegister(Model model, @RequestParam(value="name", required=false) String name) {
+        model.addAttribute("name", name);
+        return "confirmRegistration";
     }
 
 
@@ -57,11 +63,18 @@ public class UserController {
     public String loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
         boolean loginResult = userService.login(user);
         if (loginResult) {
-            return hello(model, user.getUserEmail());
+            return confirmLogin(model, user.getUserEmail());
         } else {
             return "error";
         }
     }
+
+    @GetMapping({"/confirmLogin"})
+    public String confirmLogin(Model model, @RequestParam(value="name", required=false) String name) {
+        model.addAttribute("name", name);
+        return "confirmationLogin";
+    }
+
 
 
     @GetMapping({"/hello"})
