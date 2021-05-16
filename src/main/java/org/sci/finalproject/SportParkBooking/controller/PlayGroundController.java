@@ -53,11 +53,9 @@ public class PlayGroundController {
             PlayGround element = iterator.next();
 //            sportName = "Football";
             if (sportName==null) {
-                System.out.println("HERE_IF");
                 playGroundList.add(element);
             }
             else{
-                System.out.println("HERE_ELSE");
                 Long sportId = sportService.returnSportId(sportName);
                 if (element.getSportId()==sportId) {
                     playGroundList.add(element);
