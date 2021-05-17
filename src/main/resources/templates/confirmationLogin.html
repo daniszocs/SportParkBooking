@@ -2,13 +2,22 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Title</title>
-</head>
-<body>
-<img src="src/main/resources/images/home.png" alt="home icon" style="width:128px;height:128px;">
-<h2 class="confirmLogin-title" th:text="'Hello, your login is successful, '+ ${name} + '!'"></h2>
+    <head>
+        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>SportParkBooking - ConfirmationLogin</title>
+    </head>
+    <body>
+        <ul>
+            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+            <li><a  href="/templates/booking2.html" th:href="@{/booking}"> Booking</a></li>
+            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+        </ul>
+        <img src="src/main/resources/images/home.png" alt="home icon" style="width:128px;height:128px;">
+        <h2 class="confirmLogin-title" th:text="'Hello, your login is successful, '+ ${name} + '!'"></h2>
 
-</body>
+    </body>
 </html>

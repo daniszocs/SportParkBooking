@@ -4,10 +4,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-        <title>SportParkBooking - Login</title>
+        <title>SportParkBooking</title>
     </head>
     <body>
-
         <ul>
             <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
             <li><a  href="/templates/booking2.html" th:href="@{/booking}"> Booking</a></li>
@@ -17,24 +16,11 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
-        <form action="#" th:action="@{/loginUser}" th:object="${user}" method="post">
-            <table border="1">
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="text" th:field="*{userEmail}" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" th:field="*{userPassword}" /></td>
-                </tr>
-
-                <tr>
-                    <td><input type="reset" value="Reset" /> </td>
-                    <td><input type="submit" value="Submit" /></td>
-
-                </tr>
-
-            </table>
-        </form>
+        <div class="myCenter">
+            <h1>Sport Park Booking</h1>
+            <br><br>
+            <img src="/images/home.jpg"
+                 th:attr="src=@{/images/home.jpg},title=#{SportParkBooking},alt=#{SportParkBooking}" />
+        </div>
     </body>
 </html>

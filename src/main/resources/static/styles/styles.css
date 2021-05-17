@@ -1,3 +1,35 @@
 .myClass {
-    color: green;
+    color: red;
 }
+li a {
+  float: left;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1831FC;
+}
+
+li a:hover {
+  background-color: red;
+}
+
+.myCenter {
+    border: 0px outset white;
+    color: blue;
+    text-align: center;
+  }
+
+.myLeft {
+      border: 0px outset black;
+      color: red;
+      text-align: left;
+    }

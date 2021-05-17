@@ -15,7 +15,7 @@ public class SportController {
     @Autowired
     private SportService sportService;
 
-    @GetMapping({"/selectSport"})
+    @GetMapping({"/booking"})
     public String selectSport(Model model) {
 
         //************************************************************************

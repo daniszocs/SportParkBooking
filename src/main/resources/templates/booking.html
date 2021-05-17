@@ -3,8 +3,8 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="../static/styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>SportParkBooking</title>
+    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>SportParkBooking - Booking</title>
 </head>
     <body>
         <ul>
@@ -14,13 +14,25 @@
             <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
             <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
-        </ul>
-        <div class="myCenter">
-            <h1>Sport Park Booking</h1>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>        </ul>
+
+        <div class="myLeft">
+            <h1>Please select sport</h1>
             <br><br>
-            <img src="/images/home.jpg"
-                 th:attr="src=@{/images/home.jpg},title=#{SportParkBooking},alt=#{SportParkBooking}" />
+
+            <table style="border: 1px solid red">
+                <tbody>
+                <tr th:each="sport: ${mySportList}">
+                    <td th:text="${sport.getSportName}" />
+                </tr>
+                </tbody>
+            </table>
+
+
         </div>
+
+
+
+
     </body>
 </html>

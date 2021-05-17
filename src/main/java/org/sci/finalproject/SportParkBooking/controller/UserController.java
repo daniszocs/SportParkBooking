@@ -28,7 +28,7 @@ public class UserController {
     }
 
 
-    @RequestMapping("/register")
+   @RequestMapping("/register")
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
@@ -77,46 +77,46 @@ public class UserController {
 
 
 
-    @GetMapping({"/hello"})
-    public String hello(Model model, @RequestParam(value="name", required=false) String name) {
-        // http://localhost:8080/hello?name=maki
-        // model = un camp din view/html
-        model.addAttribute("name", name);
-        return "index";
-    }
-
-
-    @GetMapping({"/test"})
-    public String test(Model model, @RequestParam(value="name", required=false) String name) {
-        // http://localhost:8080/hello?name=maki
-        // model = un camp din view/html
-
-        //************************************************************************
-        User user1 = new User("Ioan Farcas", "nelutufarcas", "eMailAddress@nelutu.ro", "0763532299", "parola.nelutu");
-        User user2 = new User("Daniel Szocs", "daniszocs", "eMailAddress@dani.ro", "0755001122", "parola.dani");
-        User user3 = new User("Luminita Daraban", "lumidaraban", "eMailAddress@luminita.ro", "0743201345", "parola.luminita");
-        User user4 = new User("Alex Blidar", "alexblidar", "eMailAddress@alex.ro", "0712212121", "parola.alex");
-        User user5 = new User("Florina Morari", "florinamorari", "eMailAddress@florina.ro", "0701100110", "parola.florina");
-
-
-        userService.register(user1);
-        userService.register(user2);
-        userService.register(user3);
-        userService.register(user4);
-        userService.register(user5);
-
-
-        List<User> usersList = new ArrayList<>();
-        usersList.add(user1);
-        usersList.add(user2);
-        usersList.add(user3);
-        usersList.add(user4);
-        usersList.add(user5);
-
-        model.addAttribute("myUsersList", usersList);
-        return "index";
-
-
-    }
+//    @GetMapping({"/hello"})
+//    public String hello(Model model, @RequestParam(value="name", required=false) String name) {
+//        // http://localhost:8080/hello?name=maki
+//        // model = un camp din view/html
+//        model.addAttribute("name", name);
+//        return "index";
+//    }
+//
+//
+//    @GetMapping({"/test"})
+//    public String test(Model model, @RequestParam(value="name", required=false) String name) {
+//        // http://localhost:8080/hello?name=maki
+//        // model = un camp din view/html
+//
+//        //************************************************************************
+//        User user1 = new User("Ioan Farcas", "nelutufarcas", "eMailAddress@nelutu.ro", "0763532299", "parola.nelutu");
+//        User user2 = new User("Daniel Szocs", "daniszocs", "eMailAddress@dani.ro", "0755001122", "parola.dani");
+//        User user3 = new User("Luminita Daraban", "lumidaraban", "eMailAddress@luminita.ro", "0743201345", "parola.luminita");
+//        User user4 = new User("Alex Blidar", "alexblidar", "eMailAddress@alex.ro", "0712212121", "parola.alex");
+//        User user5 = new User("Florina Morari", "florinamorari", "eMailAddress@florina.ro", "0701100110", "parola.florina");
+//
+//
+//        userService.register(user1);
+//        userService.register(user2);
+//        userService.register(user3);
+//        userService.register(user4);
+//        userService.register(user5);
+//
+//
+//        List<User> usersList = new ArrayList<>();
+//        usersList.add(user1);
+//        usersList.add(user2);
+//        usersList.add(user3);
+//        usersList.add(user4);
+//        usersList.add(user5);
+//
+//        model.addAttribute("myUsersList", usersList);
+//        return "index";
+//
+//
+//    }
 
 }
