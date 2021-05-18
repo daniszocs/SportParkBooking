@@ -16,8 +16,11 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
-        <img src="src/main/resources/images/home.png" alt="home icon" style="width:128px;height:128px;">
-        <h2 class="confirmLogin-title" th:text="'Hello, your login is successful, '+ ${name} + '!'"></h2>
+        <h2 class="confirmLogin-title" th:text="'Hello '+ ${name} + ','"></h2>
+        <h2 class="confirmLogin-title" th:text="'Your login is successful' + '!'"></h2>
+        <h2 class="confirmLogin-title" th:text="'Go to booking' + '!'"></h2>
+        <img src="/images/login.jpg"
+             th:attr="src=@{/images/login.jpg},title=#{LoginConfirmation},alt=#{LoginConfirmation}" />
 
     </body>
 </html>

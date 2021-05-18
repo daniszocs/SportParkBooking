@@ -16,10 +16,14 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
-        <h2 class="confirmRegister-title" th:text="'Welcome, your registration is successful, '+ ${name} + '!'"></h2>
+        <h2 class="confirmRegister-title" th:text="'Welcome '+ ${name} + ','"></h2>
+        <h2 class="confirmRegister-title" th:text="'Your registration is successful' + '!'"></h2>
+        <h2 class="confirmRegister-title" th:text="'Go to Booking'"></h2>
+        <img src="/images/register.jpg"
+             th:attr="src=@{/images/register.jpg},title=#{RegisterConfirmation},alt=#{RegisterConfirmation}" />
+        <!--<img src="/images/home.jpg"
+             th:attr="src=@{/images/home.jpg},title=#{SportParkBooking},alt=#{SportParkBooking}" /> -->
 
-        <img src="/images/home.jpg"
-             th:attr="src=@{/images/home.jpg},title=#{SportParkBooking},alt=#{SportParkBooking}" />
 
     </body>
 </html>
