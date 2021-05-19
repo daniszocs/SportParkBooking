@@ -19,11 +19,11 @@ public class SportController {
     public String selectSport(Model model) {
 
         //************************************************************************
-        Sport sport1 = new Sport("Football");
-        sportService.register(sport1);
-
-        Sport sport2 = new Sport("Tennis");
-        sportService.register(sport2);
+//        Sport sport1 = new Sport("Football");
+//        sportService.register(sport1);
+//
+//        Sport sport2 = new Sport("Tennis");
+//        sportService.register(sport2);
 
 
         List<Sport> sportList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class SportController {
         iterable.forEach(sportList::add);
 
         model.addAttribute("mySportList", sportList);
-        return "selectSport";
+        return "booking";
 
 
     }

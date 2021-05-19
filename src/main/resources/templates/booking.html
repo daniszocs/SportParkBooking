@@ -22,9 +22,9 @@
 
             <table style="border: 1px solid red">
                 <tbody>
-                <tr th:each="sport: ${mySportList}">
-                    <td th:text="${sport.getSportName}" />
-                </tr>
+                    <tr th:each="sport: ${mySportList}">
+                        <td> <a th:href="@{/selectPlayGround?sportName={id}(id=${sport.getSportName})}" th:text="${sport.getSportName}"/></td>
+                    </tr>
                 </tbody>
             </table>
 
