@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Booking</title>
+</head>
+<body>
+
+
+<h2 class="confirmLogin-title" th:text="'Hello '+ ${name} + ','"></h2>
+<h2 class="confirmLogin-title" th:text="'Your login is successful' + '!'"></h2>
+<h2 class="confirmLogin-title" th:text="'Go to booking' + '!'"></h2>
+
+<form action="#" th:action="@{/infoBooking}" th:object="${booking}" method="post">
+    <table border="1">
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+</html>

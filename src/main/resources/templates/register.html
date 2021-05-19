@@ -28,15 +28,17 @@
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" th:field="*{userEmail}" /></td>
+                    <td><input type="email" th:field="*{userEmail}" /></td>
                 </tr>
                 <tr>
                     <td>Password: </td>
-                    <td><input type="text" th:field="*{userPassword}" /></td>
+                    <td><input type="password" th:field="*{userPassword}" /></td>
                 </tr>
                 <tr>
                     <td>Phone: </td>
-                    <td><input type="number" th:field="*{userPhone}" /></td>
+                    <td><input type="tel" id="phone" name="phone"
+                               pattern="07[0-9]{8}"
+                               required th:field="*{userPhone}" /></td>
                 </tr>
                 <tr>
                     <td>

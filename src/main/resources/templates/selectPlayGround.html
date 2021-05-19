@@ -10,7 +10,8 @@
 <table style="border: 1px solid red">
     <tbody>
     <tr th:each="playGround: ${myPlayGroundList}">
-        <td th:text="${playGround.getPlayGroundName}" />
+<!--        <td th:text="${playGround.getPlayGroundName}" />-->
+        <td> <a th:href="@{/selectBooking?playGroundName={id}(id=${playGround.getPlayGroundName})}" th:text="${playGround.getPlayGroundName}"/></td>
     </tr>
     </tbody>
 </table>

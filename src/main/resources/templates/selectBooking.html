@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Booking</title>
+</head>
+<body>
+
+
+<form action="#" th:action="@{/confirmBooking}" th:object="${booking}" method="post">
+    <table border="1">
+        <tr>
+            <td>Data:</td>
+            <td><input type="date" th:field="*{bookingDate}"/></td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td><input type="time" th:field="*{bookingHour}"/></td>
+        </tr>
+        <tr>
+            <td>Booking duration (h):</td>
+            <td><input type="text" th:field="*{bookingDuration}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+</html>
