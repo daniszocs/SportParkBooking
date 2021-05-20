@@ -1,9 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>SportParkBooking - Generic error</title>
         <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>SportParkBooking - Gallery</title>
     </head>
     <body>
         <ul>
@@ -15,9 +16,8 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
-        <h2 class="error-title" th:text="'Oops! Sorry, this page is not found.'"></h2>
-        <h2 class="error-title" th:text="'Not to worry, you can head back to our home page to find what you are looking for.'"></h2>
-        <img src="/images/register.jpg"
-             th:attr="src=@{/images/error.jpg},title=#{ErrorPage},alt=#{ErrorPage}" />
+        <div class="myCenter">
+
+        </div>
     </body>
 </html>
