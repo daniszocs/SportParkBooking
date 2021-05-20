@@ -11,16 +11,16 @@
 <form action="#" th:action="@{/confirmBooking}" th:object="${booking}" method="post">
     <table border="1">
         <tr>
-            <td>Data:</td>
+            <td>Date:</td>
             <td><input type="date" th:field="*{bookingDate}"/></td>
         </tr>
         <tr>
             <td>Time:</td>
-            <td><input type="time" th:field="*{bookingHour}"/></td>
+            <td><input type="time" min="09:00" max="18:00" step=3600 value="09:00" th:field="*{bookingHour}"/><small> Office hours are 9am to 6pm </small></td>
         </tr>
         <tr>
             <td>Booking duration (h):</td>
-            <td><input type="text" th:field="*{bookingDuration}"/></td>
+            <td><input type="int" th:field="*{bookingDuration}"/></td>
         </tr>
         <tr>
             <td>

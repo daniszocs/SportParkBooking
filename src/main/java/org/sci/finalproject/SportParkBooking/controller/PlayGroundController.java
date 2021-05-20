@@ -1,7 +1,6 @@
 package org.sci.finalproject.SportParkBooking.controller;
 
 import org.sci.finalproject.SportParkBooking.model.PlayGround;
-import org.sci.finalproject.SportParkBooking.model.Sport;
 import org.sci.finalproject.SportParkBooking.service.PlayGroundService;
 import org.sci.finalproject.SportParkBooking.service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;

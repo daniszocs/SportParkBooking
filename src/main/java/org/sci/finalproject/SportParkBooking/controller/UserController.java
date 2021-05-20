@@ -16,7 +16,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping("/home")
     public String myIndexPage() {
         return "index";
@@ -27,8 +26,7 @@ public class UserController {
         return this.myIndexPage();
     }
 
-
-   @RequestMapping("/register")
+    @RequestMapping("/register")
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);

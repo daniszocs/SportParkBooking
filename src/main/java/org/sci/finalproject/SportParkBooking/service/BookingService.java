@@ -16,7 +16,7 @@ public class BookingService {
     @Autowired
     private BookingRepo bookingRepo;
 
-    public void saveNewBooking(Booking newBooking){
+    public boolean saveNewBooking(Booking newBooking){
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String bookingSignature = df.format(newBooking.getBookingDate()) + newBooking.getBookingHour() + newBooking.getPlayGroundID();
@@ -25,7 +25,9 @@ public class BookingService {
         Booking foundBookingSignature = bookingRepo.findByBookingSignature(newBooking.getBookingSignature());
         if (foundBookingSignature==null){
             bookingRepo.save(newBooking);
+            return true;
         }
+        return false;
 
 //        LOGGER.info("User has been registered");
     }
