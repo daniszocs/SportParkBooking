@@ -17,17 +17,18 @@ public class Booking {
     private String bookingHour;
     /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
     private int bookingDuration;
-    private int  bookingPrice;
+    private int bookingPrice;
     private long userID;
     private long playGroundID;
-    private BookingStatusEnum bookingStatus;
+    private String bookingStatus;
     private String bookingSignature;
 
     public Booking() {
     }
 
-    public Booking(Date bookingDate, String bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+    public Booking(Date bookingDate, String bookingHour, int bookingDuration, int bookingPrice, long userID, long playGroundID, String bookingStatus) {
 //    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+//    public Booking(Date bookingDate, String bookingHour, int bookingDuration, long userID, long playGroundID, String bookingStatus) {
         this.bookingDate = bookingDate;
         this.bookingHour = bookingHour;
         this.bookingDuration = bookingDuration;
@@ -69,9 +70,9 @@ public class Booking {
 
     public void setPlayGroundID(long playGroundID) { this.playGroundID = playGroundID; }
 
-    public BookingStatusEnum getBookingStatus() { return bookingStatus;  }
+    public String getBookingStatus() { return bookingStatus;  }
 
-    public void setBookingStatus(BookingStatusEnum bookingStatus) { this.bookingStatus = bookingStatus; }
+    public void setBookingStatus(String bookingStatus) { this.bookingStatus = bookingStatus; }
 
     public String getBookingSignature() {
         return bookingSignature;

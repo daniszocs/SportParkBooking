@@ -41,9 +41,6 @@ public class PlayGroundController {
         playGroundService.register(playGround3);
 
         List<PlayGround> playGroundList = new ArrayList<>();
-//        playGroundList.add(playGround1);
-//        playGroundList.add(playGround2);
-//        playGroundList.add(playGround3);
 
         Iterable<PlayGround> iterable = playGroundService.findAll();
         Iterator<PlayGround> iterator = iterable.iterator();

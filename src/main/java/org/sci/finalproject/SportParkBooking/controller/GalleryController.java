@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class GalleryController {
+
     @GetMapping({"/gallery"})
     public String aboutUs(Model model) {
-
         return "gallery";
     }
 }
