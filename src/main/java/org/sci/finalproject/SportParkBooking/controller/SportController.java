@@ -15,7 +15,7 @@ public class SportController {
     @Autowired
     private SportService sportService;
 
-    @GetMapping({"/booking"})
+    @GetMapping({"/selectSport"})
     public String selectSport(Model model) {
 
         //************************************************************************
@@ -34,7 +34,7 @@ public class SportController {
         iterable.forEach(sportList::add);
 
         model.addAttribute("mySportList", sportList);
-        return "booking";
+        return "selectSport";
 
 
     }

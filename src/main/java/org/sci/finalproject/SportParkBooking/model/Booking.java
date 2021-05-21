@@ -14,7 +14,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO )
     private long bookingID;
     private Date bookingDate;
-    private Time bookingHour;
+    private String bookingHour;
     /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
     private int bookingDuration;
     private int  bookingPrice;
@@ -26,7 +26,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date bookingDate, Time bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
+    public Booking(Date bookingDate, String bookingHour, int bookingDuration, int bookingTotalPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
 //    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
         this.bookingDate = bookingDate;
         this.bookingHour = bookingHour;
@@ -49,9 +49,9 @@ public class Booking {
 
     public void setBookingDate(Date bookingDate) {  this.bookingDate = bookingDate;  }
 
-    public Time getBookingHour() { return bookingHour;  }
+    public String getBookingHour() { return bookingHour;  }
 
-    public void setBookingHour(Time bookingHour) { this.bookingHour = bookingHour;  }
+    public void setBookingHour(String bookingHour) { this.bookingHour = bookingHour;  }
 
     public int getBookingDuration() {  return bookingDuration;  }
 

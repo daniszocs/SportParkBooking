@@ -30,7 +30,9 @@ public class BookingController {
 
         @RequestMapping({"/confirmBooking"})
     public String confirmBooking(@ModelAttribute("booking") Booking booking, BindingResult errors, Model model) {
-        boolean confirmBookingResult = bookingService.saveNewBooking(booking);
+//            java.sql.Timestamp.valueOf("2008-04-06 09:01:10");
+
+            boolean confirmBookingResult = bookingService.saveNewBooking(booking);
         if (confirmBookingResult) {
             return "confirmBooking";
         } else {
