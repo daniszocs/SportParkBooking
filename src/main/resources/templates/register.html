@@ -2,52 +2,53 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>SportParkBooking - Booking</title>
-        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    </head>
-    <body>
-        <ul>
-            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-            <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
-            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
-            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
-            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
-            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
-        </ul>
-        <form action="#" th:action="@{/registerUser}" th:object="${user}" method="post">
-            <table border="1">
-                <tr>
-                    <td>User Name:</td>
-                    <td><input type="text" th:field="*{userName}"/></td>
-                </tr>
-                <tr>
-                    <td>Name and Surname:</td>
-                    <td><input type="text" th:field="*{name}"/></td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="email" th:field="*{userEmail}" /></td>
-                </tr>
-                <tr>
-                    <td>Password: </td>
-                    <td><input type="password" th:field="*{userPassword}" /></td>
-                </tr>
-                <tr>
-                    <td>Phone: </td>
-                    <td><input type="tel" id="phone" name="phone"
-                               pattern="[0-9]{10}"
-                               required th:field="*{userPhone}" /></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="reset" value="Reset" />
-                        <input type="submit" value="Submit" />
-                    </td>
-                </tr>
+<head>
+    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>Register</title>
+</head>
+<body>
+<ul>
+    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+    <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
+    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+</ul>
+<p>User ID: [[${userID}]]</p>
+<form action="#" th:action="@{/registerUser}" th:object="${user}" method="post">
+    <table border="1">
+        <tr>
+            <td>User Name:</td>
+            <td><input type="text" th:field="*{userName}"/></td>
+        </tr>
+        <tr>
+            <td>Name and Surname:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{userEmail}" /></td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td><input type="password" th:field="*{userPassword}" /></td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td><input type="tel" id="phone" name="phone"
+                       pattern="[0-9]{10}"
+                       required th:field="*{userPhone}" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
 
-            </table>
-        </form>
-    </body>
+    </table>
+</form>
+</body>
 </html>

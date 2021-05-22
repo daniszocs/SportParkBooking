@@ -9,4 +9,5 @@ public interface UserRepo extends CrudRepository<User, Long> {
 
     public User findByUserName(String userName);
     public User findByUserEmail(String userEmail);
+    public User findByUserID(Long userID);
 }

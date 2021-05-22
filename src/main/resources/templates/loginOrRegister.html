@@ -4,9 +4,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Confirm Booking</title>
+    <title>SportParkBooking - Login</title>
 </head>
 <body>
+
 <ul>
     <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
     <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
@@ -17,11 +18,8 @@
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
 <p>User ID: [[${userID}]]</p>
-<p>Playground ID: [[${playGroundID}]]</p>
-
-
-<h2 class="confirmLogin-title" th:text="'Hello '+ ${userName} + ','"></h2>
-<h2 class="confirmLogin-title" th:text="'Your booking is successful' + '!'"></h2>
-
+<p> <a th:href="@{/login}" th:text="Login"/></p>
+<p> or </p>
+<p> <a th:href="@{/register}" th:text="Register"/></p>
 </body>
 </html>

@@ -25,13 +25,37 @@ public class UserController {
     private UserRepo userRepo;
 
     @RequestMapping("/home")
-    public String myIndexPage() {
+    public String myIndexPage(@ModelAttribute("user") User user,
+                              @RequestParam(value="userID", required=false) String userID,
+                              @RequestParam(value="userEmail", required=false) String userEmail,
+                              Model model) {
+//        if (userID != "" && userID != null) {
+//            model.addAttribute("userID", userID);
+//            return "index";
+//        }
+//        if (userEmail != "" && userEmail != null) {
+//            User foundUser = userRepo.findByUserEmail(userEmail);
+//            model.addAttribute("userID", foundUser.getUserID());
+//            return "index";
+//        }
         return "index";
     }
 
     @RequestMapping("/")
-    public String myDefaultPage() {
-        return this.myIndexPage();
+    public String myDefaultPage(@ModelAttribute("user") User user,
+                                @RequestParam(value="userID", required=false) String userID,
+                                @RequestParam(value="userEmail", required=false) String userEmail,
+                                Model model) {
+//        if (userID != "" && userID != null) {
+//            model.addAttribute("userID", userID);
+//            return "index";
+//        }
+//        if (userEmail != "" && userEmail != null) {
+//            User foundUser = userRepo.findByUserEmail(userEmail);
+//            model.addAttribute("userID", foundUser.getUserID());
+//            return "index";
+//        }
+        return "index";
     }
 
     @RequestMapping("/register")

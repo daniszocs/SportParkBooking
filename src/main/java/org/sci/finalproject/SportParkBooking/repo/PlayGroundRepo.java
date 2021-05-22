@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface PlayGroundRepo extends CrudRepository<PlayGround,Long> {
 
     public PlayGround findByPlayGroundName(String playGroundName);
+    public PlayGround findByPlayGroundID(Long playGroundID);
 
 }

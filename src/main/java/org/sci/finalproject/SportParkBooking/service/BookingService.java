@@ -19,7 +19,7 @@ public class BookingService {
     public boolean saveNewBooking(Booking newBooking){
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String bookingSignature = df.format(newBooking.getBookingDate()) + newBooking.getBookingHour() + newBooking.getPlayGroundID();
+        String bookingSignature = df.format(newBooking.getBookingDate()) + "_" + newBooking.getBookingHour() + "_" + newBooking.getPlayGroundID();
         newBooking.setBookingSignature(bookingSignature);
 
         Booking foundBookingSignature = bookingRepo.findByBookingSignature(newBooking.getBookingSignature());

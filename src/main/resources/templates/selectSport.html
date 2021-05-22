@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>SportParkBooking - Booking</title>
+    <title>Select Sport</title>
 </head>
 <body>
 <ul>
@@ -14,7 +14,9 @@
     <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
     <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>        </ul>
+    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+</ul>
+<p>User ID: [[${userID}]]</p>
 
 <div class="myLeft">
     <h1>Please select sport</h1>
@@ -23,16 +25,10 @@
     <table style="border: 1px solid red">
         <tbody>
         <tr th:each="sport: ${mySportList}">
-            <td> <a th:href="@{/selectPlayGround?sportName={id}(id=${sport.getSportName})}" th:text="${sport.getSportName}"/></td>
+            <td> <a th:href="@{/selectPlayGround?sportName={name1}&userID={id1}(name1=${sport.getSportName},id1=${userID})}" th:text="${sport.getSportName}"/></td>
         </tr>
         </tbody>
     </table>
-
-
 </div>
-
-
-
-
 </body>
 </html>

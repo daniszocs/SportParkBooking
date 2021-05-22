@@ -1,5 +1,6 @@
 package org.sci.finalproject.SportParkBooking.service;
 
+import org.sci.finalproject.SportParkBooking.model.Sport;
 import org.sci.finalproject.SportParkBooking.model.User;
 import org.sci.finalproject.SportParkBooking.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,14 @@ public class UserService {
         return false;
     }
 
+//    public User findUser(User user)  {
+//        User foundUser = userRepo.findByUserEmail(user.getUserEmail());
+//        if (foundUser!=null){
+//            return foundUser;
+//        }
+//        return null;
+//    }
+
     public void deleteAccount(User userToDelete){
         userRepo.delete(userToDelete);
 
@@ -52,6 +61,10 @@ public class UserService {
 
     public Long returnUserID(String userName){
         return userRepo.findByUserName(userName).getUserID();
+    }
+
+    public Iterable<User> findAll() {
+        return userRepo.findAll();
     }
 
 }

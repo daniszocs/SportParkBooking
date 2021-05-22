@@ -1,14 +1,30 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
     <title>Select Booking</title>
 </head>
 <body>
+<ul>
+    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+    <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
+    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+</ul>
+<p>User ID: [[${userID}]]</p>
+<p>Playground ID: [[${playGroundID}]]</p>
+
+<div class="myLeft">
+    <h1>Please select playground</h1>
+    <br><br>
 
 
-<form action="#" th:action="@{/confirmBooking}" th:object="${booking}" method="post">
+<form action="#" th:action="@{/confirmBooking?playGroundID={id1}&userID={id2}(id1=${playGroundID},id2=${userID})}" th:object="${booking}" method="post">
     <table border="1">
         <tr>
             <td>Date:</td>
@@ -20,7 +36,7 @@
         </tr>
         <tr>
             <td>Booking duration (h):</td>
-            <td><input type="number" min=1 max=1 th:field="*{bookingDuration}"/></td>
+            <td><input type="number" min=1 max=2 th:field="*{bookingDuration}"/></td>
         </tr>
         <tr>
             <td>
@@ -32,5 +48,6 @@
     </table>
 </form>
 
+</div>
 </body>
 </html>

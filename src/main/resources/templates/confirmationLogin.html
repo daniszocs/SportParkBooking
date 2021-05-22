@@ -16,6 +16,7 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
+        <p>User ID: [[${userID}]]</p>
         <h2 class="confirmLogin-title" th:text="'Hello '+ ${name} + ','"></h2>
         <h2 class="confirmLogin-title" th:text="'Your login is successful' + '!'"></h2>
         <h2 class="confirmLogin-title" th:text="'Go to booking' + '!'"></h2>
