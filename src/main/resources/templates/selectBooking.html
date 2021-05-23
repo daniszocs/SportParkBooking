@@ -20,23 +20,25 @@
 <p>Playground ID: [[${playGroundID}]]</p>
 
 <div class="myLeft">
-    <h1>Please select playground</h1>
+    <h1>Please select booking hour</h1>
     <br><br>
 
 
 <form action="#" th:action="@{/confirmBooking?playGroundID={id1}&userID={id2}(id1=${playGroundID},id2=${userID})}" th:object="${booking}" method="post">
     <table border="1">
-        <tr>
+        <tr hidden>
             <td>Date:</td>
             <td><input type="date" th:field="*{bookingDate}"/></td>
         </tr>
+        <p>Available hours: [[${myHourAvailableList}]].</p>
+        <p hidden>Please make booking one hour at a time.</p>
         <tr>
             <td>Time:</td>
-            <td><input type="time" min="09:00" max="18:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Office hours are 9am to 6pm </small></td>
+            <td><input type="time" min="09:00" max="18:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 6pm. </small></td>
         </tr>
         <tr>
             <td>Booking duration (h):</td>
-            <td><input type="number" min=1 max=2 th:field="*{bookingDuration}"/></td>
+            <td><input type="number" min="1" max="1" value="1" th:field="*{bookingDuration}"/></td>
         </tr>
         <tr>
             <td>

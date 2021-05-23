@@ -76,4 +76,5 @@ public class Booking {
     public void setBookingSignature(String bookingSignature) {
         this.bookingSignature = bookingSignature;
     }
+
 }

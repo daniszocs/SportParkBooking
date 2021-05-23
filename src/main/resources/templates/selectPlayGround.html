@@ -24,8 +24,11 @@
 
     <table style="border: 1px solid red">
         <tbody>
+        <tr th:if="${myPlayGroundList.empty}">
+            <td colspan="2"> No PlayGrounds Available </td>
+        </tr>
         <tr th:each="playGround: ${myPlayGroundList}">
-            <td> <a th:href="@{/selectBooking?playGroundID={id1}&userID={id2}(id1=${playGround.getPlayGroundID},id2=${userID})}" th:text="${playGround.getPlayGroundName}"/></td>
+            <td> <a th:href="@{/selectBookingDate?playGroundID={id1}&userID={id2}(id1=${playGround.getPlayGroundID},id2=${userID})}" th:text="${playGround.getPlayGroundName}"/></td>
         </tr>
         </tbody>
     </table>

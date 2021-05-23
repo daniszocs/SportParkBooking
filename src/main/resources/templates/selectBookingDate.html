@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Select Sport</title>
+    <title>Select Booking</title>
 </head>
 <body>
 <ul>
@@ -17,21 +17,29 @@
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
 <p>User ID: [[${userID}]]</p>
+<p>Playground ID: [[${playGroundID}]]</p>
 
 <div class="myLeft">
-    <h1>Please select sport</h1>
+    <h1>Please select booking date</h1>
     <br><br>
 
-    <table style="border: 1px solid red">
-        <tbody>
-        <tr th:if="${mySportList.empty}">
-            <td colspan="2"> No Sports Available </td>
+
+<form action="#" th:action="@{/selectBooking?playGroundID={id1}&userID={id2}(id1=${playGroundID},id2=${userID})}" th:object="${booking}" method="post">
+    <table border="1">
+        <tr>
+            <td>Date:</td>
+            <td><input type="date" th:field="*{bookingDate}"/></td>
         </tr>
-        <tr th:each="sport: ${mySportList}">
-            <td> <a th:href="@{/selectPlayGround?sportName={name1}&userID={id1}(name1=${sport.getSportName},id1=${userID})}" th:text="${sport.getSportName}"/></td>
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </td>
         </tr>
-        </tbody>
+
     </table>
+</form>
+
 </div>
 </body>
 </html>
