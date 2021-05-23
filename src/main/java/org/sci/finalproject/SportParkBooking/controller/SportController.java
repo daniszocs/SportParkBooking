@@ -1,6 +1,5 @@
 package org.sci.finalproject.SportParkBooking.controller;
 
-import org.sci.finalproject.SportParkBooking.model.PlayGround;
 import org.sci.finalproject.SportParkBooking.model.Sport;
 import org.sci.finalproject.SportParkBooking.model.User;
 import org.sci.finalproject.SportParkBooking.repo.UserRepo;
@@ -32,11 +31,11 @@ public class SportController {
                               Model model) {
 
         //************************************************************************
-//        Sport sport1 = new Sport("Football");
-//        sportService.register(sport1);
-//
-//        Sport sport2 = new Sport("Tennis");
-//        sportService.register(sport2);
+        Sport sport1 = new Sport("Football");
+        sportService.register(sport1);
+
+        Sport sport2 = new Sport("Tennis");
+        sportService.register(sport2);
 
         User foundUser = userRepo.findByUserEmail(user.getUserEmail());
         user = foundUser;

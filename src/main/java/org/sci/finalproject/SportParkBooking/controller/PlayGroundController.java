@@ -33,20 +33,20 @@ public class PlayGroundController {
 
         //************************************************************************
 
-//        String sportName1 = "Football";
-//		Long sportId1 = sportService.returnSportId(sportName1);
-//        PlayGround playGround1 = new PlayGround("FootballField1",sportId1,100);
-//        playGroundService.register(playGround1);
-//
-//        String sportName2 = "Tennis";
-//        Long sportId2 = sportService.returnSportId(sportName2);
-//        PlayGround playGround2 = new PlayGround("TennisField1",sportId2,150);
-//        playGroundService.register(playGround2);
-//
-//        String sportName3 = "Football";
-//        Long sportId3 = sportService.returnSportId(sportName3);
-//        PlayGround playGround3 = new PlayGround("FootballField2",sportId3,100);
-//        playGroundService.register(playGround3);
+        String sportName1 = "Football";
+		Long sportId1 = sportService.returnSportId(sportName1);
+        PlayGround playGround1 = new PlayGround("FootballField1",sportId1,100);
+        playGroundService.register(playGround1);
+
+        String sportName2 = "Tennis";
+        Long sportId2 = sportService.returnSportId(sportName2);
+        PlayGround playGround2 = new PlayGround("TennisField1",sportId2,150);
+        playGroundService.register(playGround2);
+
+        String sportName3 = "Football";
+        Long sportId3 = sportService.returnSportId(sportName3);
+        PlayGround playGround3 = new PlayGround("FootballField2",sportId3,100);
+        playGroundService.register(playGround3);
 
 
 //        User foundUser = userRepo.findByUserEmail(user.getUserEmail());

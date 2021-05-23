@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
-import java.sql.Time;
-//import java.util.Date;
 
 @Entity
 public class Booking {
@@ -15,7 +13,6 @@ public class Booking {
     private long bookingID;
     private Date bookingDate;
     private String bookingHour;
-    /*keep int? or change to double ?? Possible values: 1, 1.5, 2 ?*/
     private int bookingDuration;
     private int bookingPrice;
     private long userID;
@@ -27,8 +24,6 @@ public class Booking {
     }
 
     public Booking(Date bookingDate, String bookingHour, int bookingDuration, int bookingPrice, long userID, long playGroundID, String bookingStatus) {
-//    public Booking(Date bookingDate, Time bookingHour, int bookingPrice, long userID, long playGroundID, BookingStatusEnum bookingStatus) {
-//    public Booking(Date bookingDate, String bookingHour, int bookingDuration, long userID, long playGroundID, String bookingStatus) {
         this.bookingDate = bookingDate;
         this.bookingHour = bookingHour;
         this.bookingDuration = bookingDuration;
