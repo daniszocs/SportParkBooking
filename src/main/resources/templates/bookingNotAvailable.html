@@ -21,7 +21,7 @@
 
 
 <h2 class="confirmLogin-title" th:text="'Hello '+ ${userName} + ','"></h2>
-<h2 class="confirmLogin-title" th:text="'The playground is already booked for selected hours. Please select another booking!'"></h2>
+<p>The playground is already booked for [[${myHoursBooked}]]. Please select another booking!</p>
 
 </body>
 </html>

@@ -74,7 +74,6 @@ public class BookingController {
         booking.setUserID(Long.parseLong(userID));
 
         List hourAvailableList = new ArrayList<String>();
-        //bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "09:00" + "_" + playGroundID);
         if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "09:00" + "_" + playGroundID) == null) {
             hourAvailableList.add("09:00");
         }
@@ -102,8 +101,11 @@ public class BookingController {
         if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "17:00" + "_" + playGroundID) == null) {
             hourAvailableList.add("17:00");
         }
-
+        if (hourAvailableList.size()==0){
+            hourAvailableList.add("No available hours");
+        }
         model.addAttribute("myHourAvailableList",hourAvailableList);
+        model.addAttribute("myBookingDate",booking.getBookingDate().toString());
         return "selectBooking";
     }
 
@@ -111,6 +113,7 @@ public class BookingController {
     public String confirmBooking(@ModelAttribute("booking") Booking booking,
                                  @RequestParam(value="userID", required=false) String userID,
                                  @RequestParam(value="playGroundID", required=false) String playGroundID,
+                                 @RequestParam(value="hourAvailableList", required=false) String hourAvailableList,
                                  BindingResult errors, Model model) {
         //        Booking booking = new Booking();
         model.addAttribute("userID", userID);
@@ -120,6 +123,29 @@ public class BookingController {
         //get name to display "Hello name, registration is successful!"
         String userName = userRepo.findByUserID(Long.parseLong(userID)).getUserName();
         model.addAttribute("userName", userName);
+
+        //create booked Hours list
+        List hoursBookedList = new ArrayList<String>();
+        boolean isBooked = false;
+        //java.sql.Timestamp.valueOf("2021.05.23 09:00:00");
+        Timestamp bookingHourTimeStampStart = java.sql.Timestamp.valueOf(booking.getBookingDate() + " " + booking.getBookingHour() + ":00");
+        for (int i = 1; i <= booking.getBookingDuration(); i++) {
+
+            //get selected booking Hours
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            String selectedBookingHour = sdf.format(bookingHourTimeStampStart.getTime() + (1000 * 60 * 60 * (i-1)));
+
+            //check if selected booking Hour is found in db
+            //if found, add to booked Hours list
+            String bookingSignature = booking.getBookingDate() + "_" + selectedBookingHour + "_" + playGroundID;
+            Booking foundBooking = bookingRepo.findByBookingSignature(bookingSignature);
+            if (foundBooking != null) {
+                isBooked = true;
+                hoursBookedList.add(selectedBookingHour);
+            }
+        }
+
+            model.addAttribute("myHoursBooked",hoursBookedList);
 
 //        //check if hour list contains hour that is booked
 //        boolean isBooked = false;
@@ -132,33 +158,34 @@ public class BookingController {
 //                hoursBooked.add(hourAvailableList.get(i));
 //            }
 //        }
-//
-//        model.addAttribute("MyHoursBooked",hoursBooked);
 
-//      java.sql.Timestamp.valueOf("2021.05.23 09:00:00");
-        Timestamp bookingHourTimeStampStart = java.sql.Timestamp.valueOf(booking.getBookingDate() + " " + booking.getBookingHour() + ":00");
-        boolean confirmBookingResult=true;
-        for (int i = 1; i <= booking.getBookingDuration(); i++) {
-            //each booking is one hour, starting with booking hour.
-            Booking oneBooking = new Booking();
-            //set bookingDate
-            oneBooking.setBookingDate(booking.getBookingDate());
-            //set bookingHour
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            String oneBookingHour = sdf.format(bookingHourTimeStampStart.getTime() + (1000 * 60 * 60 * (i-1)));
-            oneBooking.setBookingHour(oneBookingHour);
-            //set bookingDuration
-            oneBooking.setBookingDuration(1);
-            //set bookingPrice
-            oneBooking.setBookingPrice(playGroundRepo.findByPlayGroundID(Long.parseLong(playGroundID)).getPricePerHour());
-            //set bookingUserID
-            oneBooking.setUserID(Long.parseLong(userID));
-            //set bookingPlayGroundID
-            oneBooking.setPlayGroundID(Long.parseLong(playGroundID));
-            //set bookingStatus
-            oneBooking.setBookingStatus(BookingStatusEnum.ACTIVE.name());
-            //save booking and confirm
-            confirmBookingResult = confirmBookingResult && bookingService.saveNewBooking(oneBooking);
+//      create booking in db if hours are available.
+//        Timestamp bookingHourTimeStampStart = java.sql.Timestamp.valueOf(booking.getBookingDate() + " " + booking.getBookingHour() + ":00");
+        boolean confirmBookingResult=false;
+        if (isBooked == false) {
+            confirmBookingResult=true;
+            for (int i = 1; i <= booking.getBookingDuration(); i++) {
+                //each booking is one hour, starting with booking hour.
+                Booking oneBooking = new Booking();
+                //set bookingDate
+                oneBooking.setBookingDate(booking.getBookingDate());
+                //set bookingHour
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                String oneBookingHour = sdf.format(bookingHourTimeStampStart.getTime() + (1000 * 60 * 60 * (i-1)));
+                oneBooking.setBookingHour(oneBookingHour);
+                //set bookingDuration
+                oneBooking.setBookingDuration(1);
+                //set bookingPrice
+                oneBooking.setBookingPrice(playGroundRepo.findByPlayGroundID(Long.parseLong(playGroundID)).getPricePerHour());
+                //set bookingUserID
+                oneBooking.setUserID(Long.parseLong(userID));
+                //set bookingPlayGroundID
+                oneBooking.setPlayGroundID(Long.parseLong(playGroundID));
+                //set bookingStatus
+                oneBooking.setBookingStatus(BookingStatusEnum.ACTIVE.name());
+                //save booking and confirm
+                confirmBookingResult = confirmBookingResult && bookingService.saveNewBooking(oneBooking);
+            }
         }
 
         if (confirmBookingResult) {

@@ -24,7 +24,7 @@
     <br><br>
 
 
-<form action="#" th:action="@{/confirmBooking?playGroundID={id1}&userID={id2}(id1=${playGroundID},id2=${userID})}" th:object="${booking}" method="post">
+<form action="#" th:action="@{/confirmBooking?playGroundID={id1}&userID={id2}&myBookingDate={id3}(id1=${playGroundID},id2=${userID},id3=${myBookingDate})}" th:object="${booking}" method="post">
     <table border="1">
         <tr hidden>
             <td>Date:</td>
@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <td>Booking duration (h):</td>
-            <td><input type="number" min="1" max="1" value="1" th:field="*{bookingDuration}"/></td>
+            <td><input type="number" min="1" max="2" value="1" th:field="*{bookingDuration}"/></td>
         </tr>
         <tr>
             <td>
