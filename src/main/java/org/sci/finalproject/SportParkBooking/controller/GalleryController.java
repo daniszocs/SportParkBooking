@@ -8,7 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GalleryController {
 
     @GetMapping({"/gallery"})
-    public String aboutUs(Model model) {
+    public String gallery(Model model) {
         return "gallery";
+    }
+
+    @GetMapping({"/galleryFotbal"})
+    public String galleryFotbal(Model model) {
+        return "galleryFotbal";
+    }
+
+    @GetMapping({"/galleryTenis"})
+    public String galleryTenis(Model model) {
+        return "galleryTenis";
     }
 }
