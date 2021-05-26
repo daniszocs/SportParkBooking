@@ -104,6 +104,27 @@ footer .copyright {
     display: block;
     height: auto;
 }
+#hrefContent1 > img{
+    width: 800px;
+    height: 500px;
+    margin: 10px 35px;
+}
+#hrefContent2 > img{
+    width: 800px;
+    height: 500px;
+    margin: 10px 215px;
+}
+#hrefContent3 {
+     margin: 10px 35px;
+}
+#hrefContent4 {
+     margin: 10px 215px;
+}
+#contentRow{
+    width: 1900px;
+    display: block;
+    height: auto;
+}
 #contentColumn1{
     width: 600px;
     display: block;
