@@ -45,6 +45,7 @@ public class PlayGroundController {
         }
 
         model.addAttribute("myPlayGroundList", playGroundList);
+        model.addAttribute("sportName", sportName);
         return "galleryPlayGround";
     }
 }

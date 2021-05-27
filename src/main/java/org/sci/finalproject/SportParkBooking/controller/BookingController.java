@@ -39,10 +39,13 @@ public class BookingController {
 
 
     @GetMapping({"/bookingPlayGround"})
-    public String galleryPlayGround(@RequestParam(value="playGroundName", required=false) String playGroundName, Model model) {
+    public String bookingPlayGround(@RequestParam(value="playGroundName", required=false) String playGroundName,
+                                    @RequestParam(value="sportName", required=false) String sportName,
+                                    Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
         model.addAttribute("playGroundName", playGroundName);
+        model.addAttribute("sportName", sportName);
         return "loginOrRegister";
     }
 
@@ -50,18 +53,18 @@ public class BookingController {
 
 
 
-    @RequestMapping("/booking")
-    public String myBookingPage(@ModelAttribute("user") User user,
-            @RequestParam(value="userID", required=false) String userID,
-            Model model) {
-        model.addAttribute("userID", userID);
-        if (userID == null) {
-            return "loginOrRegister";
-        }
-        else {
-            return "selectSport";
-        }
-    }
+//    @RequestMapping("/booking")
+//    public String myBookingPage(@ModelAttribute("user") User user,
+//            @RequestParam(value="userID", required=false) String userID,
+//            Model model) {
+//        model.addAttribute("userID", userID);
+//        if (userID == null) {
+//            return "loginOrRegister";
+//        }
+//        else {
+//            return "selectSport";
+//        }
+//    }
 
     @RequestMapping("/selectBookingDate")
     public String mySelectBookingDatePage(@ModelAttribute("booking") Booking booking,@ModelAttribute("user") User user,

@@ -16,6 +16,14 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
+<div class="myCenter">
+
+</div>
+<p><br/></p>
+<img src="/images/register.jpg"
+     th:attr="src=@{/images/register.jpg},title=#{register},alt=#{register}" />
+<p><br/></p>
+<p> Register new user: </p>
 <form action="#" th:action="@{'/registerUser?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
