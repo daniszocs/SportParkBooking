@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-        <title>SportParkBooking - Gallery</title>
+        <title>SportParkBooking - Football Gallery</title>
     </head>
     <body>
         <ul>
@@ -19,23 +19,19 @@
         <div class="myCenter">
 
         </div>
+        <p><a href="/templates/gallery.html"  th:href="@{/}"><button>Back to Sports</button></a></p>
         <div class="row">
-            <div class="column">
-                <div class="card">
-                    <a href="galleryFotbal"><img src="/images/fotbal.jpg" alt="Fotbal" style="width:100%" height="600"></a>
-                    <div class="container">
-                        <h2><a href="galleryFotbal">Fotbal</a></h2>
-                    </div>
+            <div class="column" th:each="playGround: ${myPlayGroundList}" >
+                <a th:href ="'gallery'+${playGround.playGroundName}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="600"></a>
+                <div class="container">
+                    <h2><a th:href="'gallery'+${playGround.playGroundName}">[[${playGround.playGroundName}]]</a></h2>
                 </div>
-            </div>
 
-            <div class="column">
-                <div class="card">
-                    <a href="galleryTenis"><img src="/images/tenis.jpg" alt="Tenis" style="width:100%" height="600"></a>
+                    <img src="'/images/'+${playGround.playGroundName}+'_'+${playGround.playGroundID}+'.jpg" alt="${playGround.playGroundName}+'_'${playGround.playGroundID}" style="width:100%" height="400">
                     <div class="container">
-                        <h2><a href="galleryTenis">Tenis</a></h2>
+                        <h2>Teren 1</h2>
+                        <p>Sus pe Feleac va oferim o oportunitate unică ! Fotbal în mijlocul naturii într-o locație deosebită !</p>
                     </div>
-                </div>
             </div>
         </div>
     </body>

@@ -16,15 +16,13 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<p>User ID: [[${userID}]]</p>
-<p>Playground ID: [[${playGroundID}]]</p>
 
 <div class="myLeft">
     <h1>Please select booking date</h1>
     <br><br>
 
 
-<form action="#" th:action="@{/selectBooking?playGroundID={id1}&userID={id2}(id1=${playGroundID},id2=${userID})}" th:object="${booking}" method="post">
+<form action="#" th:action="@{'/selectBooking?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
     <table border="1">
         <tr>
             <td>Date:</td>

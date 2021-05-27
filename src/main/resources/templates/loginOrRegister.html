@@ -17,9 +17,29 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<p>User ID: [[${userID}]]</p>
-<p> <a th:href="@{/login}" th:text="Login"/></p>
-<p> or </p>
-<p> <a th:href="@{/register}" th:text="Register"/></p>
+<!--<p> <a th:href="@{'/login?playGroundName='+${playGroundName}}" th:text="Login"/></p>-->
+<p> Login to make booking: </p>
+<form action="#" th:action="@{'/loginUser?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
+    <table border="1">
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{userEmail}" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{userPassword}" /></td>
+        </tr>
+
+        <tr>
+            <td><input type="reset" value="Reset" /> </td>
+            <td><input type="submit" value="Submit" /></td>
+
+        </tr>
+
+    </table>
+</form>
+
+<p> You don't have an account? No problem, create one here: </p>
+<p> <a th:href="@{'/register?playGroundName='+${playGroundName}}" th:text="Register"/></p>
 </body>
 </html>

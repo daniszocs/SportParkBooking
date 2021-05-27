@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>Confirm Booking</title>
+</head>
+<body>
+<ul>
+    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+    <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
+    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+</ul>
+<h2 class="confirmLogin-title" th:text="'Hello '+${userName}"></h2>
+<h2 class="confirmLogin-title" th:text="'Your reservation for '+${playGroundName}+' is ready'"></h2>
+<h2 class="confirmLogin-title" th:text="'for '+${booking.bookingDate}"></h2>
+<h2 class="confirmLogin-title" th:text="'from '+${booking.bookingHour}"></h2>
+<h2 class="confirmLogin-title" th:text="'you have '+${booking.bookingDuration}+' hours.'"></h2>
+<br/>
+<h2 class="confirmLogin-title" th:text="'Total price: '+${bookingPrice}+' RON'"></h2>
+<h2 class="confirmLogin-title" th:text="'Please confirm.'"></h2>
+
+ <div>
+        <button type="button">
+            <a th:href="@{'/confirmBooking?playGroundName='+${playGroundName}+'&userID='+${userID}+'&bookingDate='+${booking.bookingDate}+'&bookingHour='+${booking.bookingHour}+'&bookingDuration='+${booking.bookingDuration}}">Submit</a>
+        </button>
+
+         <button type="button">
+             <a th:href="@{'/'}">Cancel</a>
+         </button>
+    </div>
+
+</body>
+</html>

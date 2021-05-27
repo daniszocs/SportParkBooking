@@ -16,12 +16,26 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<p>User ID: [[${userID}]]</p>
 <p>Playground ID: [[${playGroundID}]]</p>
 
 
 <h2 class="confirmLogin-title" th:text="'Hello '+ ${userName} + ','"></h2>
 <p>The playground is already booked for [[${myHoursBooked}]]. Please select another booking!</p>
+
+<form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
+    <table border="0">
+        <tr>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--<button type="submit">Submit</button>-->
+<!--<button type="button">-->
+<!--    <a th:href="@{'/selectBooking?playGroundName='+${playGroundName}+'&userID='+${userID}}">Submit</a>-->
+<!--</button>-->
 
 </body>
 </html>

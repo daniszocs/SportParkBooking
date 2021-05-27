@@ -16,8 +16,7 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<p>User ID: [[${userID}]]</p>
-<form action="#" th:action="@{/registerUser}" th:object="${user}" method="post">
+<form action="#" th:action="@{'/registerUser?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
             <td>User Name:</td>
