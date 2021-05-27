@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:width="http://www.w3.org/1999/xhtml">
     <head>
         <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
         <title>SportParkBooking - Tennis Gallery</title>
@@ -16,30 +16,29 @@
             <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
-        <div class="myCenter">
 
-        </div>
-        <p><a href="/templates/gallery.html"  th:href="@{/gallery}"><button>Back to gallery</button></a></p>
-        <div class="row">
-            <div class="column">
-                <img src="/images/Tenis_1.jpg" alt="Tenis_1" style="width:100%" height="400">
+         <p><a href="/templates/gallery.html"  th:href="@{/gallery}"><button>Back to gallery</button></a></p>
+
+        <div class="row" id="contentRow">
+            <div  class="column"  id="contentColumn1">
+                <img src="/images/Tenis_1.jpg" alt="Tenis_1" >
                 <div class="container">
                     <h2>Teren 1</h2>
                     <p>Terenul 1 este pentru relaxare, relaxare, relaxare ! Nici nu ar putea fi altfel dat fiind zona superbă care îl înconjoară !
-                    Situat în zona Făgetul Clujului acest teren vă așteaptă și pe timp de noapte având o nocturnă ultra-modernă instalată recent !</p>
+                        Situat în zona Făgetul Clujului acest teren vă așteaptă și pe timp de noapte având o nocturnă ultra-modernă instalată recent !</p>
                 </div>
             </div>
 
-            <div class="column">
-                <img src="/images/Tenis_2.jpg" alt="Tenis_2" style="width:100%" height="400">
+            <div class="column" id="contentColumn2">
+                <img src="/images/Tenis_2.jpg" alt="Tenis_2">
                 <div class="container">
                     <h2>Teren 2</h2>
                     <p>Situat chiar în inima orașului Cluj-Napoca la doi pași de centru, în cadrul unui club exclusivist terenul numărul 2 este pentru cei care vor mai mult decăt o simplă oră de sport !</p>
                 </div>
             </div>
 
-            <div class="column">
-                <img src="/images/Tenis_3.jpg" alt="Tenis_3" style="width:100%" height="400">>
+            <div class="column" id="contentColumn3">
+                <img src="/images/Tenis_3.jpg" alt="Tenis_3">
                 <div class="container">
                     <h2>Teren 3</h2>
                     <p>Amenajat în vechea gară a orașului Cluj acest teren vă invită la o porție de mișcare și de istorie în același timp !</p>
@@ -47,6 +46,9 @@
             </div>
 
         </div>
+
+
+
 
 
     </body>

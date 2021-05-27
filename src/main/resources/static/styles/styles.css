@@ -98,3 +98,131 @@ footer .copyright {
 	padding: 0 16px;
     color: white;
 }
+
+#contentRow{
+    width: 1900px;
+    display: block;
+    height: auto;
+}
+#hrefContent1 > img{
+    width: 800px;
+    height: 500px;
+    margin: 10px 35px;
+}
+#hrefContent2 > img{
+    width: 800px;
+    height: 500px;
+    margin: 10px 215px;
+}
+#hrefContent3 {
+     margin: 10px 35px;
+}
+#hrefContent4 {
+     margin: 10px 215px;
+}
+#contentRow{
+    width: 1900px;
+    display: block;
+    height: auto;
+}
+#contentColumn1{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn1 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn1 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn1 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+#contentColumn2{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn2 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn2 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn2 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+#contentColumn3{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn3 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn3 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn3 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+#contentColumn4{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn4 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn4 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn4 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+
+#contentColumn5{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn5 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn5 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn5 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
