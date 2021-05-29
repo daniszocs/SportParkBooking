@@ -18,16 +18,16 @@ public class SportService {
             return true;
         }
         return false;
-//        LOGGER.info("Sport has been registered");
+    }
+
+    public Iterable<Sport> findAll() {
+        return sportRepo.findAll();
     }
 
     public Long returnSportId(String sportName){
         return sportRepo.findBySportName(sportName).getSportID();
     }
 
-    public Iterable<Sport> findAll() {
-        return sportRepo.findAll();
-    }
 }
 
 

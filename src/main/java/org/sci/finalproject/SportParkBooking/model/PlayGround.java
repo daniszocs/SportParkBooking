@@ -27,12 +27,6 @@ public class PlayGround {
         this.pricePerHour = pricePerHour;
     }
 
-    //    public PlayGround(String playGroundName, long sportId, int pricePerHour) {
-//        this.playGroundName = playGroundName;
-//        this.sportId = sportId;
-//        this.pricePerHour = pricePerHour;
-//    }
-
     public long getPlayGroundID() {
         return playGroundID;
     }

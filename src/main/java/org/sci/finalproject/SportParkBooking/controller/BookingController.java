@@ -2,7 +2,6 @@ package org.sci.finalproject.SportParkBooking.controller;
 
 import org.sci.finalproject.SportParkBooking.model.Booking;
 import org.sci.finalproject.SportParkBooking.model.BookingStatusEnum;
-import org.sci.finalproject.SportParkBooking.model.PlayGround;
 import org.sci.finalproject.SportParkBooking.model.User;
 import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.sci.finalproject.SportParkBooking.repo.PlayGroundRepo;
@@ -15,14 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 
 @Controller
 public class BookingController {
@@ -49,23 +45,6 @@ public class BookingController {
         return "loginOrRegister";
     }
 
-
-
-
-
-//    @RequestMapping("/booking")
-//    public String myBookingPage(@ModelAttribute("user") User user,
-//            @RequestParam(value="userID", required=false) String userID,
-//            Model model) {
-//        model.addAttribute("userID", userID);
-//        if (userID == null) {
-//            return "loginOrRegister";
-//        }
-//        else {
-//            return "selectSport";
-//        }
-//    }
-
     @RequestMapping("/selectBookingDate")
     public String mySelectBookingDatePage(@ModelAttribute("booking") Booking booking,@ModelAttribute("user") User user,
             @RequestParam(value="userID", required=false) Long userID,
@@ -74,7 +53,6 @@ public class BookingController {
         model.addAttribute("booking", booking);
         model.addAttribute("userID", user.getUserID());
         model.addAttribute("playGroundName", playGroundName);
-        //model.addAttribute(booking.getBookingDate());
         booking.setPlayGroundID(playGroundRepo.findByPlayGroundName(playGroundName).getPlayGroundID());
         String userEmail = user.getUserEmail();
         //if userID is not given as attribute, get userID from userEmail.
@@ -88,20 +66,16 @@ public class BookingController {
         return "selectBookingDate";
     }
 
-    //RequestParam hourList
     @RequestMapping("/selectBooking")
     public String mySelectBookingPage(@ModelAttribute("booking") Booking booking,
                                       @RequestParam(value="userID", required=false) String userID,
                                       @RequestParam(value="playGroundName", required=false) String playGroundName,
                                       Model model) {
-//        Booking booking = new Booking();
         model.addAttribute("booking", booking);
         model.addAttribute("userID", userID);
         model.addAttribute("playGroundName", playGroundName);
         Long playGroundID = (playGroundRepo.findByPlayGroundName(playGroundName)).getPlayGroundID();
         booking.setPlayGroundID(playGroundID);
-        //playGroundID = booking.getPlayGroundID();
-        //booking.setUserID(Long.parseLong(userID));
 
         List hourAvailableList = new ArrayList<String>();
         if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "09:00" + "_" + playGroundID) == null) {
@@ -178,19 +152,6 @@ public class BookingController {
 
         model.addAttribute("myHoursBooked",hoursBookedList);
 
-//        //check if hour list contains hour that is booked
-//        boolean isBooked = false;
-//        List hoursBooked = new ArrayList<String>();
-//        for (int i = 1; i <= hourAvailableList.size(); i++) {
-//            String bookingSignature = booking.getBookingDate() + hourAvailableList.get(i).toString();
-//            Booking foundBooking = bookingRepo.findByBookingSignature(bookingSignature);
-//            if (foundBooking != null) {
-//                isBooked = true;
-//                hoursBooked.add(hourAvailableList.get(i));
-//            }
-//        }
-
-
         if (!isBooked) {
             return "infoBooking";
         } else {
@@ -198,19 +159,16 @@ public class BookingController {
         }
     }
 
-        @RequestMapping({"/confirmBooking"})
+    @RequestMapping({"/confirmBooking"})
     public String confirmBooking(@ModelAttribute("booking") Booking booking,
                                  @RequestParam(value="userID", required=false) Long userID,
                                  @RequestParam(value="playGroundName", required=false) String playGroundName,
                                  @RequestParam(value="bookingDate", required=false) Date bookingDate,
                                  BindingResult errors, Model model) {
-        //        Booking booking = new Booking();
         model.addAttribute("userID", userID);
         model.addAttribute("playGroundName", playGroundName);
         booking.setBookingDate(bookingDate);
-//        model.addAttribute("booking", booking);
         Long playGroundID = playGroundRepo.findByPlayGroundName(playGroundName).getPlayGroundID();
-        //get name to display "Hello name, registration is successful!"
         String userName = userRepo.findByUserID(userID).getUserName();
         model.addAttribute("userName", userName);
 

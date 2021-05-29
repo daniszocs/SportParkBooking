@@ -11,12 +11,17 @@ public class PlayGroundService {
     @Autowired
     private PlayGroundRepo playGroundRepo;
 
-    public void register(PlayGround playGround) {
+    public boolean register(PlayGround playGround) {
         PlayGround foundPlayGround = playGroundRepo.findByPlayGroundName(playGround.getPlayGroundName());
         if (foundPlayGround==null){
             playGroundRepo.save(playGround);
+            return true;
         }
-//        LOGGER.info("User has been registered");
+        return false;
+    }
+
+    public Iterable<PlayGround> findAll() {
+        return playGroundRepo.findAll();
     }
 
     public Long returnPlayGroundID(String playGroundName){
@@ -39,12 +44,7 @@ public class PlayGroundService {
     }
 
     public void deletePlayGound(PlayGround playGroundToDelete){
-
         playGroundRepo.delete(playGroundToDelete);
-
     }
 
-    public Iterable<PlayGround> findAll() {
-        return playGroundRepo.findAll();
-    }
 }

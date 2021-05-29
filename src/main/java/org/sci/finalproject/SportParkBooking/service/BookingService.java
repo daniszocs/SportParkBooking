@@ -28,11 +28,8 @@ public class BookingService {
             return true;
         }
         return false;
-
-//        LOGGER.info("User has been registered");
     }
 
-    public void updateBookingStatus(BookingStatusEnum bookingStatus){}
-
+    // public void updateBookingStatus(BookingStatusEnum bookingStatus){}
 
 }

@@ -33,7 +33,6 @@ public class GalleryController {
         Iterator<PlayGround> iterator = iterable.iterator();
         while(iterator.hasNext()) {
             PlayGround element = iterator.next();
-//            sportName = "Football";
             if (sportName==null) {
                 playGroundList.add(element);
             }
