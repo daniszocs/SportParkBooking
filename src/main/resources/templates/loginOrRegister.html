@@ -19,13 +19,13 @@
 <div class="myCenter">
 
 </div>
-<p><a th:href="@{'/galleryPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a></p>
+<p><a th:href="@{'/selectPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a></p>
 <img src="/images/loginOrRegister.jpg"
      th:attr="src=@{/images/loginOrRegister.jpg},title=#{loginOrRegister},alt=#{loginOrRegister}" />
 
 <!--<p> <a th:href="@{'/login?playGroundName='+${playGroundName}}" th:text="Login"/></p>-->
 <p> Login to make booking: </p>
-<form action="#" th:action="@{'/loginUser?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
+<form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
             <td>Email:</td>

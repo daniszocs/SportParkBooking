@@ -22,9 +22,9 @@
 <div class="row" >
     <div class="column" th:each="sport: ${mySportList}" >
         <div class="card">
-            <a th:href ="'galleryPlayGround?sportName='+${sport.SportName}"><img th:src="'/images/'+${sport.sportName}+'.jpg'" th:alt="${sport.sportName}" style="width:100%" height="600"></a>
+            <a th:href ="'selectPlayGround?sportName='+${sport.SportName}"><img th:src="'/images/'+${sport.sportName}+'.jpg'" th:alt="${sport.sportName}" style="width:100%" height="600"></a>
             <div class="container">
-                <h2><a th:href="'galleryPlayGround?sportName='+${sport.SportName}">[[${sport.sportName}]]</a></h2>
+                <h2><a th:href="'selectPlayGround?sportName='+${sport.SportName}">[[${sport.sportName}]]</a></h2>
             </div>
         </div>
     </div>

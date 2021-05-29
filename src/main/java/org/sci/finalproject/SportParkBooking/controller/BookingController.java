@@ -33,41 +33,37 @@ public class BookingController {
     @Autowired
     private BookingRepo bookingRepo;
 
-
-    @GetMapping({"/bookingPlayGround"})
-    public String bookingPlayGround(@RequestParam(value="playGroundName", required=false) String playGroundName,
-                                    @RequestParam(value="sportName", required=false) String sportName,
-                                    Model model) {
-        User emptyUser = new User();
-        model.addAttribute("user", emptyUser);
-        model.addAttribute("playGroundName", playGroundName);
-        model.addAttribute("sportName", sportName);
-        return "loginOrRegister";
-    }
-
     @RequestMapping("/selectBookingDate")
     public String mySelectBookingDatePage(@ModelAttribute("booking") Booking booking,@ModelAttribute("user") User user,
             @RequestParam(value="userID", required=false) Long userID,
             @RequestParam(value="playGroundName", required=false) String playGroundName,
             Model model) {
-        model.addAttribute("booking", booking);
-        model.addAttribute("userID", user.getUserID());
-        model.addAttribute("playGroundName", playGroundName);
-        booking.setPlayGroundID(playGroundRepo.findByPlayGroundName(playGroundName).getPlayGroundID());
-        String userEmail = user.getUserEmail();
+
         //if userID is not given as attribute, get userID from userEmail.
         // ex: from login or register you have info about userEmail
         //from bookingNotAvailable you have info about userID
-        if (userID==0) {
+
+        if (userID==null && userService.login(user)==true) {
             userID = userRepo.findByUserEmail(user.getUserEmail()).getUserID();
         }
+        user.setUserID(userID);
         booking.setUserID(userID);
 
-        return "selectBookingDate";
+        model.addAttribute("booking", booking);
+        model.addAttribute("userID", user.getUserID());
+        model.addAttribute("playGroundName", playGroundName);
+
+        if (userID==null && userService.login(user)==true) {
+            return "selectBookingDate";
+        }
+        if (userID!=null) {
+            return "selectBookingDate";
+        }
+        return "error";
     }
 
-    @RequestMapping("/selectBooking")
-    public String mySelectBookingPage(@ModelAttribute("booking") Booking booking,
+    @RequestMapping("/selectBookingHours")
+    public String mySelectBookingHoursPage(@ModelAttribute("booking") Booking booking,
                                       @RequestParam(value="userID", required=false) String userID,
                                       @RequestParam(value="playGroundName", required=false) String playGroundName,
                                       Model model) {
@@ -110,7 +106,7 @@ public class BookingController {
         }
         model.addAttribute("myHourAvailableList",hourAvailableList);
         model.addAttribute("myBookingDate",booking.getBookingDate().toString());
-        return "selectBooking";
+        return "selectBookingHours";
     }
 
     @RequestMapping({"/infoBooking"})
@@ -172,7 +168,7 @@ public class BookingController {
         String userName = userRepo.findByUserID(userID).getUserName();
         model.addAttribute("userName", userName);
 
-//      create booking in db if hours are available.
+        // create booking in db if hours are available.
         Timestamp bookingHourTimeStampStart = java.sql.Timestamp.valueOf(booking.getBookingDate() + " " + booking.getBookingHour() + ":00");
         boolean confirmBookingResult=true;
             for (int i = 1; i <= booking.getBookingDuration(); i++) {

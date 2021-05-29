@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Select PlayGround</title>
+    <title>SportParkBooking - Playground Gallery</title>
 </head>
 <body>
 <ul>
@@ -15,22 +15,20 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
+<div class="myCenter">
 
-<div class="myLeft">
-    <h1>Please select playground</h1>
-    <br><br>
-
-    <table style="border: 1px solid red">
-        <tbody>
-        <tr th:if="${myPlayGroundList.empty}">
-            <td colspan="2"> No PlayGrounds Available </td>
-        </tr>
-        <tr th:each="playGround: ${myPlayGroundList}">
-            <td> <a th:href="@{/selectBookingDate?playGroundID={id1}&userID={id2}(id1=${playGround.getPlayGroundID},id2=${userID})}" th:text="${playGround.getPlayGroundName}"/></td>
-        </tr>
-        </tbody>
-    </table>
-
+</div>
+<p><a href="/templates/gallery.html"  th:href="@{/}"><button>Back to Sports</button></a></p>
+<div class="row">
+    <div class="column" th:each="playGround: ${myPlayGroundList}" >
+        <a th:href ="'loginOrRegister?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="400"></a>
+        <div class="container">
+            <h2><a th:href="'loginOrRegister?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}">[[${playGround.playGroundName}]]</a></h2>
+            <h3>Price per hour: [[${playGround.pricePerHour}]] RON </h3>
+            <h3>Location: [[${playGround.playGroundAddress}]]</h3>
+            <p>[[${playGround.playGroundDescription}]]</p>
+        </div>
+    </div>
 </div>
 </body>
 </html>

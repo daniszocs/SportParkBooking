@@ -28,26 +28,15 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
-    @RequestMapping("/home")
-    public String myIndexPage(Model model){
-
-        List<Sport> sportList = new ArrayList<>();
-        Iterable<Sport> iterableSport = sportService.findAll();
-        iterableSport.forEach(sportList::add);
-        model.addAttribute("mySportList", sportList);
-
-        return "index";
-    }
-
-    @RequestMapping("/")
-    public String myDefaultPage(Model model){
-
-        List<Sport> sportList = new ArrayList<>();
-        Iterable<Sport> iterableSport = sportService.findAll();
-        iterableSport.forEach(sportList::add);
-        model.addAttribute("mySportList", sportList);
-
-        return "index";
+    @GetMapping({"/loginOrRegister"})
+    public String loginOrRegister(@RequestParam(value="playGroundName", required=false) String playGroundName,
+                                  @RequestParam(value="sportName", required=false) String sportName,
+                                  Model model) {
+        User emptyUser = new User();
+        model.addAttribute("user", emptyUser);
+        model.addAttribute("playGroundName", playGroundName);
+        model.addAttribute("sportName", sportName);
+        return "loginOrRegister";
     }
 
     @RequestMapping("/register")
@@ -70,6 +59,14 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/login")
+    public String myLoginPage(@RequestParam(value="playGroundName", required=false) String playGroundName, Model model) {
+        User emptyUser = new User();
+        model.addAttribute("user", emptyUser);
+        model.addAttribute("playGroundName", playGroundName);
+        return "login";
+    }
+
     @RequestMapping(value = "/loginUser")
     public String loginUser(@RequestParam(value="playGroundName", required=false) String playGroundName, @ModelAttribute("booking") Booking booking, @ModelAttribute("user") User user, BindingResult errors, Model model) {
         boolean loginResult = userService.login(user);
@@ -81,13 +78,5 @@ public class UserController {
         } else {
             return "error";
         }
-    }
-
-    @RequestMapping("/login")
-    public String myLoginPage(@RequestParam(value="playGroundName", required=false) String playGroundName, Model model) {
-        User emptyUser = new User();
-        model.addAttribute("user", emptyUser);
-        model.addAttribute("playGroundName", playGroundName);
-        return "login";
     }
 }

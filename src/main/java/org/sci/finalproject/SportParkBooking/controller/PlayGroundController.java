@@ -23,8 +23,8 @@ public class PlayGroundController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping({"/galleryPlayGround"})
-    public String galleryPlayGround(@RequestParam(value = "sportName", required = false) String sportName, Model model) {
+    @GetMapping({"/selectPlayGround"})
+    public String selectPlayGround(@RequestParam(value = "sportName", required = false) String sportName, Model model) {
 
         List<PlayGround> playGroundList = new ArrayList<>();
         Iterable<PlayGround> iterable = playGroundService.findAll();
@@ -44,6 +44,6 @@ public class PlayGroundController {
 
         model.addAttribute("myPlayGroundList", playGroundList);
         model.addAttribute("sportName", sportName);
-        return "galleryPlayGround";
+        return "selectPlayGround";
     }
 }
