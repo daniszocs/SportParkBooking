@@ -171,7 +171,7 @@ public class UserController {
 
             sportName = "Football";
             playGroundName = "FootballField1";
-            playGroundAddress= "1 Feleacului Street, Feleac";
+            playGroundAddress= "Feleacului Street nr 1, Feleac";
             playGroundDescription= "High up on Feleac we offer you a unique opportunity! Football in the middle of nature in a special location!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 110;
@@ -180,7 +180,7 @@ public class UserController {
 
             sportName = "Football";
             playGroundName = "FootballField2";
-            playGroundAddress= "2 Somesului Street, Cluj-Napoca";
+            playGroundAddress= "Somesului Street nr 2, Cluj-Napoca";
             playGroundDescription= "For a perfect combination of sports + nature outing, we recommend this playground! Located on the banks of the Someș, a stone's throw from Cluj-Napoca Airport, this playground is accessible to all those who choose a pleasant exercise with friends!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 120;
@@ -189,7 +189,7 @@ public class UserController {
 
             sportName = "Football";
             playGroundName = "FootballField3";
-            playGroundAddress= "3 Turda Street, Turda";
+            playGroundAddress= "Turda Street nr 3, Turda";
             playGroundDescription= "Located on the road that connects Cluj-Napoca to Turda, this playground offers you the opportunity to do sports in a truly nice place!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 130;
@@ -198,7 +198,7 @@ public class UserController {
 
             sportName = "Football";
             playGroundName = "FootballField4";
-            playGroundAddress= "4 Gheorgheni Street, Cluj-Napoca";
+            playGroundAddress= "Gheorgheni Street nr 4, Cluj-Napoca";
             playGroundDescription= "We invite you to discover our new playground near Lake Gheorgheni! Book in advance. It is one of the most requested locations!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 140;
@@ -207,7 +207,7 @@ public class UserController {
 
             sportName = "Football";
             playGroundName = "FootballField5";
-            playGroundAddress= "5 Floresti Street, Floresti";
+            playGroundAddress= "Floresti Street nr 5, Floresti";
             playGroundDescription= "The newest playground for our customers is also the most spectacular! Located in the Floresti area, this playground benefits from underground heating so football can be played here regardless of the weather conditions!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 150;
@@ -217,7 +217,7 @@ public class UserController {
 
             sportName = "Tennis";
             playGroundName = "TennisField1";
-            playGroundAddress= "1 Faget Street, Faget";
+            playGroundAddress= "Faget Street nr 1, Faget";
             playGroundDescription= "This playground is for relaxation, relaxation, relaxation! It couldn't be otherwise given the beautiful area that surrounds it! Located in the Făget Cluj area, this playground is waiting for you at night with recently installed ultra-modern lights!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 210;
@@ -226,7 +226,7 @@ public class UserController {
 
             sportName = "Tennis";
             playGroundName = "TennisField2";
-            playGroundAddress= "2 Centru Street, Cluj-Napoca";
+            playGroundAddress= "Centru Street nr 1, Cluj-Napoca";
             playGroundDescription= "Located right in the heart of Cluj-Napoca, two steps from the center, in an exclusive playground, for those who want more from a than just an hour of sports!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 220;
@@ -235,7 +235,7 @@ public class UserController {
 
             sportName = "Tennis";
             playGroundName = "TennisField3";
-            playGroundAddress= "3 Gara Street, Cluj-Napoca";
+            playGroundAddress= "Gara Street nr 3, Cluj-Napoca";
             playGroundDescription= "Situated in the old train station of Cluj, this playground invites you to take part in movement and history at the same time!";
             sportId = sportService.returnSportId(sportName);
             pricePerHour = 230;
