@@ -1,5 +1,5 @@
 .myClass {
-    color: red;
+    color: green;
 }
 li a {
   float: left;
@@ -19,7 +19,7 @@ ul {
 }
 
 li a:hover {
-  background-color: red;
+  background-color: green;
 }
 
 .myCenter {
@@ -30,7 +30,7 @@ li a:hover {
 
 .myLeft {
       border: 0px outset black;
-      color: red;
+      color: green;
       text-align: left;
     }
 .column {

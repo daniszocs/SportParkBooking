@@ -9,7 +9,6 @@
 <body>
 <ul>
     <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-    <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
     <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
     <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
     <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
@@ -17,10 +16,9 @@
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
 
-<div class="myLeft">
-    <h1>Please select booking date</h1>
-    <br><br>
-
+<div>
+<h1>Please select booking date</h1>
+<br><br>
 
 <form action="#" th:action="@{'/selectBooking?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
     <table border="1">
@@ -31,7 +29,7 @@
         <tr>
             <td>
                 <input type="reset" value="Reset" />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Select hour" />
             </td>
         </tr>
 

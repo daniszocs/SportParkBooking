@@ -9,21 +9,20 @@
 <body>
 <ul>
     <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-    <li><a  href="/templates/booking.html" th:href="@{/booking}"> Booking</a></li>
     <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
     <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
     <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<h2 class="confirmLogin-title" th:text="'Hello '+${userName}"></h2>
-<h2 class="confirmLogin-title" th:text="'Your reservation for '+${playGroundName}+' is ready'"></h2>
-<h2 class="confirmLogin-title" th:text="'for '+${booking.bookingDate}"></h2>
-<h2 class="confirmLogin-title" th:text="'from '+${booking.bookingHour}"></h2>
-<h2 class="confirmLogin-title" th:text="'you have '+${booking.bookingDuration}+' hours booked.'"></h2>
+<h2 class="confirmLogin-title" th:text="'Great, '+${userName}+'! Here are your booking details: '"></h2>
+<h2 class="confirmLogin-title" th:text="' -booking playground: '+${playGroundName}"></h2>
+<h2 class="confirmLogin-title" th:text="' -booking date: '+${booking.bookingDate}"></h2>
+<h2 class="confirmLogin-title" th:text="' -booking hour: '+${booking.bookingHour}"></h2>
+<h2 class="confirmLogin-title" th:text="' -booking duration: '+${booking.bookingDuration}+' hours.'"></h2>
 <br/>
 <h2 class="confirmLogin-title" th:text="'Total price: '+${bookingPrice}+' RON'"></h2>
-<h2 class="confirmLogin-title" th:text="'Please confirm.'"></h2>
+<h2 class="confirmLogin-title" th:text="'Do you want to continue?'"></h2>
 
  <div>
      <button type="button">
@@ -31,7 +30,7 @@
      </button>
 
      <button type="button">
-         <a th:href="@{'/confirmBooking?playGroundName='+${playGroundName}+'&userID='+${userID}+'&bookingDate='+${booking.bookingDate}+'&bookingHour='+${booking.bookingHour}+'&bookingDuration='+${booking.bookingDuration}}">Confirm booking</a>
+         <a th:href="@{'/confirmBooking?playGroundName='+${playGroundName}+'&userID='+${userID}+'&bookingDate='+${booking.bookingDate}+'&bookingHour='+${booking.bookingHour}+'&bookingDuration='+${booking.bookingDuration}}">Yes, confirm booking</a>
      </button>
  </div>
 
