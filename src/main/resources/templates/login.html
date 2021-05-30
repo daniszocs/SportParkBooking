@@ -18,19 +18,19 @@
         </ul>
         <p><br/></p>
 
-        <img src="/images/login.jpg"
-             th:attr="src=@{/images/login.jpg},title=#{login},alt=#{login}" />
+      <!--  <img src="/images/login.jpg"
+             th:attr="src=@{/images/login.jpg},title=#{login},alt=#{login}" />-->
         <p><br/></p>
-        <p> Login user: </p>
+        <p  style="font-size:30px"> <b>  Login user </b> </p>
 
         <form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
             <table border="1">
-                <tr>
-                    <td>Email:</td>
+                <tr >
+                    <td><b>Email:</b></td>
                     <td><input type="email" th:field="*{userEmail}" /></td>
                 </tr>
                 <tr>
-                    <td>Password:</td>
+                    <td><b>Password:</b></td>
                     <td><input type="password" th:field="*{userPassword}" /></td>
                 </tr>
 
@@ -39,6 +39,16 @@
                     <td><input type="submit" value="Submit" /></td>
 
                 </tr>
+                <style>
+                body {
+                  background-image: url('/images/login.jpg');
+                  width: auto;
+                  height: auto;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                  background-position: center%;
+                }
+        </style>
 
             </table>
         </form>

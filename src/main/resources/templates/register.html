@@ -17,31 +17,31 @@
 </ul>
 
 <p><br/></p>
-<img src="/images/register.jpg"
-     th:attr="src=@{/images/register.jpg},title=#{register},alt=#{register}" />
+<!--<img src="/images/register.jpg"
+     th:attr="src=@{/images/register.jpg},title=#{register},alt=#{register}" />-->
 <p><br/></p>
-<p> Register new user: </p>
+<p style="font-size:30px"><b> Register new user </b> </p>
 
 <form action="#" th:action="@{'/registerUser?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
-            <td>User Name:</td>
+            <td><b>User Name:</b></td>
             <td><input type="text" th:field="*{userName}"/></td>
         </tr>
         <tr>
-            <td>Name and Surname:</td>
+            <td><b>Name and Surname:</b></td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
         <tr>
-            <td>Email:</td>
+            <td><b>Email:</b></td>
             <td><input type="email" th:field="*{userEmail}" /></td>
         </tr>
         <tr>
-            <td>Password: </td>
+            <td><b>Password:</b> </td>
             <td><input type="password" th:field="*{userPassword}" /></td>
         </tr>
         <tr>
-            <td>Phone: </td>
+            <td><b>Phone: </b></td>
             <td><input type="tel" id="phone" name="phone"
                        pattern="[0-9]{10}"
                        required th:field="*{userPhone}" /></td>
@@ -52,6 +52,16 @@
                 <input type="submit" value="Submit" />
             </td>
         </tr>
+        <style>
+                body {
+                  background-image: url('/images/register3.jpg');
+                  width: auto;
+                  height: auto;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                  background-position: center%;
+                }
+        </style>
 
     </table>
 </form>
