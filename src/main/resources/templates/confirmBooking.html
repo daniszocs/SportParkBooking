@@ -16,7 +16,18 @@
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
 
-<h2 class="confirmLogin-title" th:text="'Your booking is successful' + '!'"></h2>
+<h2 class="confirmLogin-title" style="font-size:30px" th:text="'Your booking is successful' + '!'"></h2>
+
+    <style>
+            body {
+              background-image: url('/images/confirmBooking.jpg');
+              width: auto;
+              height: auto;
+              background-repeat: no-repeat;
+              background-size: 100%;
+              background-position: center%;
+            }
+    </style>
 
 </body>
 </html>

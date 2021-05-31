@@ -24,7 +24,7 @@
     <table border="1">
         <tr>
             <td>Date:</td>
-            <td><input type="date" th:field="*{bookingDate}"/></td>
+            <td><input type="date" th:attr="min=${now}" th:field="*{bookingDate}"/></td>
         </tr>
         <tr>
             <td>

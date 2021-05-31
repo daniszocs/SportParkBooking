@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class BookingController {
             @RequestParam(value="playGroundName", required=false) String playGroundName,
             Model model) {
 
+        LocalDate now = LocalDate.now();
+        model.addAttribute("now", now);
         //if userID is not given as attribute, get userID from userEmail.
         // ex: from login or register you have info about userEmail
         //from bookingNotAvailable you have info about userID
@@ -100,6 +103,21 @@ public class BookingController {
         }
         if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "17:00" + "_" + playGroundID) == null) {
             hourAvailableList.add("17:00");
+        }
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "18:00" + "_" + playGroundID) == null) {
+            hourAvailableList.add("18:00");
+        }
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "19:00" + "_" + playGroundID) == null) {
+            hourAvailableList.add("19:00");
+        }
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "20:00" + "_" + playGroundID) == null) {
+            hourAvailableList.add("20:00");
+        }
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "21:00" + "_" + playGroundID) == null) {
+            hourAvailableList.add("21:00");
+        }
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "22:00" + "_" + playGroundID) == null) {
+            hourAvailableList.add("22:00");
         }
         if (hourAvailableList.size()==0){
             hourAvailableList.add("No available hours");

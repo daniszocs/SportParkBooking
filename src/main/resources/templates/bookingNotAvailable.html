@@ -21,6 +21,17 @@
 <h2 class="confirmLogin-title" th:text="'Hello '+ ${userName} + ','"></h2>
 <p>The playground is already booked for [[${myHoursBooked}]]. Please select another booking time!</p>
 <p><a th:href="@{'/selectBookingDate?playGroundName='+${playGroundName}+'&userID='+${userID}}"><button>Select another booking time</button></a></p>
+
+<style>
+body {
+background-image: url('/images/bookingNotAvailable.jpg');
+width: auto;
+height: auto;
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: center%;
+}
+</style>
 <!--<form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">-->
 <!--    <table border="0">-->
 <!--        <tr>-->

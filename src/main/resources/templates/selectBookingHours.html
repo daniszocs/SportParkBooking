@@ -30,7 +30,7 @@
         <p hidden>Please make booking one hour at a time.</p>
         <tr>
             <td>Time:</td>
-            <td><input type="time" min="09:00" max="18:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 6pm. </small></td>
+            <td><input type="time" min="09:00" max="22:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 10pm. </small></td>
         </tr>
         <tr>
             <td>Booking duration (h):</td>
@@ -42,6 +42,16 @@
                 <input type="submit" value="Check booking details" />
             </td>
         </tr>
+        <style>
+                body {
+                  background-image: url('/images/bookingHour.jpg');
+                  width: auto;
+                  height: auto;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                  background-position: center%;
+                }
+        </style>
 
     </table>
 </form>
