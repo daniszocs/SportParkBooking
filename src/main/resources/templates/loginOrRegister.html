@@ -27,11 +27,11 @@
 <form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
-            <td><b>Email:</b></td>
+            <td><b>Email: </b></td>
             <td><input type="email" th:field="*{userEmail}" /></td>
         </tr>
         <tr>
-            <td><b>Password:</b></td>
+            <td><b>Password: </b></td>
             <td><input type="password" th:field="*{userPassword}" /></td>
         </tr>
 
