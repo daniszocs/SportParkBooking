@@ -16,23 +16,22 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
-<div class="myCenter">
-
-</div>
 <p><a th:href="@{'/selectPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a></p>
-<img src="/images/loginOrRegister.jpg"
-     th:attr="src=@{/images/loginOrRegister.jpg},title=#{loginOrRegister},alt=#{loginOrRegister}" />
+<p><br/></p>
+<p><br/></p>
+<!--<img src="/images/loginOrRegister.jpg"-->
+<!--     th:attr="src=@{/images/loginOrRegister.jpg},title=#{loginOrRegister},alt=#{loginOrRegister}" />-->
 
 <!--<p> <a th:href="@{'/login?playGroundName='+${playGroundName}}" th:text="Login"/></p>-->
-<p> Login to make booking: </p>
+<p style="font-size:30px"> <b>Login to make booking: </b></p>
 <form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
     <table border="1">
         <tr>
-            <td>Email:</td>
+            <td><b>Email:</b></td>
             <td><input type="email" th:field="*{userEmail}" /></td>
         </tr>
         <tr>
-            <td>Password:</td>
+            <td><b>Password:</b></td>
             <td><input type="password" th:field="*{userPassword}" /></td>
         </tr>
 
@@ -41,11 +40,21 @@
             <td><input type="submit" value="Start Booking" /></td>
 
         </tr>
+        <style>
+                body {
+                  background-image: url('/images/loginOrRegister.jpg');
+                  width: auto;
+                  height: auto;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                  background-position: center%;
+                }
+        </style>
 
     </table>
 </form>
 
-<p> You don't have an account? No problem, create one here: </p>
+<p> <b>You don't have an account yet? No problem, create one now: </b></p>
 <p> <a th:href="@{'/register?playGroundName='+${playGroundName}}" th:text="Register"/></p>
 </body>
 </html>

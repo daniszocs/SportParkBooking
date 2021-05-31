@@ -15,9 +15,10 @@
     <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
     <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
 </ul>
+<p><br/></p>
 <div>
     <h1>Sports Park Booking</h1>
-    <h2>Choose your desired sport and see available playground hours and prices.</h2>
+    <p style="font-size:18px"><b>Choose a sport to see available playground hours and prices.</b></p>
 </div>
 <div class="row" >
     <div class="column" th:each="sport: ${mySportList}" >
