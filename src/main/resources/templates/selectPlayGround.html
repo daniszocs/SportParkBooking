@@ -18,10 +18,8 @@
 <p><a href="/templates/gallery.html"  th:href="@{/}"><button>Back to Sports</button></a></p>
 <div class="row">
     <div class="column" th:each="playGround: ${myPlayGroundList}" >
-<!--        <a th:href ="'userAction?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="400"></a>-->
-        <a th:href ="'userAction?playGroundName='+${playGround.playGroundName}+'&userID='+${userID}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="400"></a>
+        <a th:href ="'userAction?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}+'&userID='+${userID}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="400"></a>
         <div class="container">
-<!--            <h2><a th:href="'userAction?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}">[[${playGround.playGroundName}]]</a></h2>-->
             <h2><a th:href="'userAction?playGroundName='+${playGround.playGroundName}+'&userID='+${userID}">[[${playGround.playGroundName}]]</a></h2>
             <h3>Price per hour: [[${playGround.pricePerHour}]] RON </h3>
             <h3>Location: [[${playGround.playGroundAddress}]]</h3>

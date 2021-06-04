@@ -31,12 +31,12 @@ public class UserController {
 
     @GetMapping({"/loginOrRegister"})
     public String loginOrRegister(@RequestParam(value="playGroundName", required=false) String playGroundName,
-//                                  @RequestParam(value="sportName", required=false) String sportName,
+                                  @RequestParam(value="sportName", required=false) String sportName,
                                   Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
         model.addAttribute("playGroundName", playGroundName);
-//        model.addAttribute("sportName", sportName);
+        model.addAttribute("sportName", sportName);
         return "loginOrRegister";
     }
 
@@ -107,11 +107,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userAction")
-    public String loginUser(@RequestParam(value="userID", required=false) String userID,
-                             @RequestParam(value="playGroundName", required=false) String playGroundName, @ModelAttribute("booking") Booking booking, BindingResult errors, Model model) {
+    public String userAction(@RequestParam(value="userID", required=false) String userID,
+                             @RequestParam(value="playGroundName", required=false) String playGroundName,
+                            @RequestParam(value="sportName", required=false) String sportName,
+                            @ModelAttribute("booking") Booking booking, BindingResult errors, Model model) {
 
         model.addAttribute("playGroundName", playGroundName);
         model.addAttribute("userID", userID);
+        model.addAttribute("sportName", sportName);
 
         if (userID.equals("null")) {
             User emptyUser = new User();

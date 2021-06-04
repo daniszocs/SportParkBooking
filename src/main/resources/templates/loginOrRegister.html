@@ -17,7 +17,7 @@
             <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
         </ul>
         <p class ="loginOrRegister">
-            <a th:href="@{'/selectPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a>
+            <a th:href="@{'/selectPlayGround?sportName='+${sportName}+'&userID='+${userID}}"><button>Back to Playgrounds</button></a>
         </p>
         <p class ="loginOrRegister2"> <b> <span class="loginOrRegister">  You don't have an account yet? No problem, create one now:  </span></span></b> <br>
             <a th:href="@{'/register?playGroundName='+${playGroundName}}"><button>Register</button></a>
