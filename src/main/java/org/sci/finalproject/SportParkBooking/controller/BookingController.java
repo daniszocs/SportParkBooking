@@ -40,8 +40,6 @@ public class BookingController {
             @RequestParam(value="playGroundName", required=false) String playGroundName,
             Model model) {
 
-        LocalDate now = LocalDate.now();
-        model.addAttribute("now", now);
         //if userID is not given as attribute, get userID from userEmail.
         // ex: from login or register you have info about userEmail
         //from bookingNotAvailable you have info about userID
@@ -57,9 +55,13 @@ public class BookingController {
         model.addAttribute("playGroundName", playGroundName);
 
         if (userID==null && userService.login(user)==true) {
+            LocalDate now = LocalDate.now();
+            model.addAttribute("now", now);
             return "selectBookingDate";
         }
         if (userID!=null) {
+            LocalDate now = LocalDate.now();
+            model.addAttribute("now", now);
             return "selectBookingDate";
         }
         return "error";

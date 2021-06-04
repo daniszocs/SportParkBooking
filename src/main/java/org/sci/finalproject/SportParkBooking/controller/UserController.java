@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,8 @@ public class UserController {
                 return "index";
             }
             else{
+                LocalDate now = LocalDate.now();
+                model.addAttribute("now", now);
                 return "selectBookingDate";
             }
         } else {
@@ -94,6 +97,8 @@ public class UserController {
                 return "index";
             }
             else{
+                LocalDate now = LocalDate.now();
+                model.addAttribute("now", now);
                 return "selectBookingDate";
             }
         } else {
@@ -108,12 +113,14 @@ public class UserController {
         model.addAttribute("playGroundName", playGroundName);
         model.addAttribute("userID", userID);
 
-        if (!userID.equals("null")) {
-            return "selectBookingDate";
-        } else {
+        if (userID.equals("null")) {
             User emptyUser = new User();
             model.addAttribute("user", emptyUser);
             return "loginOrRegister";
+        } else {
+            LocalDate now = LocalDate.now();
+            model.addAttribute("now", now);
+            return "selectBookingDate";
         }
     }
 }
