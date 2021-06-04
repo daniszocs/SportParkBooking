@@ -164,6 +164,10 @@ public class BookingController {
                 isBooked = true;
                 hoursBookedList.add(selectedBookingHour);
             }
+            if (selectedBookingHour.equals("23:00")) {
+                isBooked = true;
+                hoursBookedList.add(selectedBookingHour);
+            }
         }
 
         model.addAttribute("myHoursBooked",hoursBookedList);

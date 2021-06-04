@@ -19,7 +19,7 @@
 
 
         <h2 class="confirmLogin-title" th:text="'Hello '+ ${userName} + ','"></h2>
-        <p>The playground is already booked for [[${myHoursBooked}]]. Please select another booking time!</p>
+        <p>The playground is not available for [[${myHoursBooked}]]. Please select another booking time!</p>
         <p><a th:href="@{'/selectBookingDate?playGroundName='+${playGroundName}+'&userID='+${userID}}"><button>Select another booking time</button></a></p>
 
 
