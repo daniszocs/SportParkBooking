@@ -2,60 +2,47 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Select Booking</title>
-</head>
-<body>
-<ul>
-    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
-    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
-    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
-    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
-</ul>
+    <head>
+        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>Select Booking</title>
+    </head>
+    <body class="selectBookingHour">
+        <ul>
+            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+        </ul>
 
-<div>
-<h1>Please select booking hour</h1>
-<br><br>
+        <div>
+            <h1>Please select booking hour</h1>
+            <br><br>
 
-<form action="#" th:action="@{'/infoBooking?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
-    <table border="1">
-        <tr hidden>
-            <td>Date:</td>
-            <td><input type="date" th:field="*{bookingDate}"/></td>
-        </tr>
-        <p>Available hours: [[${myHourAvailableList}]].</p>
-        <p hidden>Please make booking one hour at a time.</p>
-        <tr>
-            <td>Time:</td>
-            <td><input type="time" min="09:00" max="22:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 10pm. </small></td>
-        </tr>
-        <tr>
-            <td>Booking duration (h):</td>
-            <td><input type="number" min="1" max="2" value="1" th:field="*{bookingDuration}"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="reset" value="Reset" />
-                <input type="submit" value="Check booking details" />
-            </td>
-        </tr>
-        <style>
-                body {
-                  background-image: url('/images/bookingHour.jpg');
-                  width: auto;
-                  height: auto;
-                  background-repeat: no-repeat;
-                  background-size: 100%;
-                  background-position: center%;
-                }
-        </style>
+            <form action="#" th:action="@{'/infoBooking?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
+                <table border="1">
+                    <tr hidden>
+                        <td>Date:</td>
+                        <td><input type="date" th:field="*{bookingDate}"/></td>
+                    </tr>
+                    <p>Available hours: [[${myHourAvailableList}]].</p>
+                    <p hidden>Please make booking one hour at a time.</p>
+                    <tr>
+                        <td>Time:</td>
+                        <td><input type="time" min="09:00" max="22:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 10pm. </small></td>
+                    </tr>
+                    <tr>
+                        <td>Booking duration (h):</td>
+                        <td><input type="number" min="1" max="2" value="1" th:field="*{bookingDuration}"/></td>
+                    </tr>
+                    <tr>
+                        <td><center> <input type="reset" value="Reset" /> </center></td>
+                        <td><center> <input type="submit" value="Check booking details" /> </center></td>
+                    </tr>
+                </table>
+            </form>
 
-    </table>
-</form>
-
-</div>
-</body>
+        </div>
+    </body>
 </html>

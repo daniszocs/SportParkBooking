@@ -6,7 +6,7 @@
         <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
         <title>SportParkBooking - Login</title>
     </head>
-    <body>
+    <body class="login">
 
         <ul>
             <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
@@ -21,10 +21,10 @@
       <!--  <img src="/images/login.jpg"
              th:attr="src=@{/images/login.jpg},title=#{login},alt=#{login}" />-->
         <p><br/></p>
-        <p  style="font-size:30px"> <b>  Login user </b> </p>
+        <h2 class ="loginOrRegister"> <b>  Login user </b> </h2>
 
         <form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
-            <table border="1">
+            <table border="1" class="loginOrRegister">
                 <tr >
                     <td><b>Email:</b></td>
                     <td><input type="email" th:field="*{userEmail}" /></td>
@@ -35,21 +35,10 @@
                 </tr>
 
                 <tr>
-                    <td><input type="reset" value="Reset" /> </td>
-                    <td><input type="submit" value="Submit" /></td>
+                    <td> <center> <input type="reset" value="Reset" />  </center> </td>
+                    <td> <center> <input type="submit" value="Submit" /> </center> </td>
 
                 </tr>
-                <style>
-                body {
-                  background-image: url('/images/login.jpg');
-                  width: auto;
-                  height: auto;
-                  background-repeat: no-repeat;
-                  background-size: 100%;
-                  background-position: center%;
-                }
-        </style>
-
             </table>
         </form>
     </body>

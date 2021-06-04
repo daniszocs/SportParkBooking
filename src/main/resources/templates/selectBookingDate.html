@@ -2,50 +2,40 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>Select Booking</title>
-</head>
-<body>
-<ul>
-    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
-    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
-    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
-    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
-</ul>
+    <head>
+        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>Select Booking</title>
+    </head>
+    <body class="selectBookingDate">
+        <ul>
+            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+        </ul>
 
-<div>
-<h1>Please select booking date</h1>
-<br><br>
+        <div>
+            <h1>Please select booking date</h1>
+            <br><br>
 
-<form action="#" th:action="@{'/selectBookingHours?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
-    <table border="1">
-        <tr>
-            <td>Date:</td>
-            <td><input type="date" th:attr="min=${now}" th:field="*{bookingDate}"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="reset" value="Reset" />
-                <input type="submit" value="Select hour" />
-            </td>
-        </tr>
-        <style>
-                body {
-                  background-image: url('/images/booking.jpg');
-                  width: auto;
-                  height: auto;
-                  background-repeat: no-repeat;
-                  background-size: 100%;
-                  background-position: center%;
-                }
-        </style>
+            <form action="#" th:action="@{'/selectBookingHours?playGroundName='+${playGroundName}+'&userID='+${userID}}" th:object="${booking}" method="post">
+                <table border="1">
+                    <tr>
+                        <td>Date:</td>
+                        <td><input type="date" th:attr="min=${now}" th:field="*{bookingDate}"/></td>
+                    </tr>
+                    <tr>
+                        <td><center> <input type="reset" value="Reset" /> </center></td>
+                        <td><center> <input type="submit" value="Select hour" /></center></td>
 
-    </table>
-</form>
 
-</div>
-</body>
+
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </body>
 </html>

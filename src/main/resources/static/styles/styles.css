@@ -1,9 +1,128 @@
 .myClass {
     color: green;
+    align: center;
 }
 
+
+h2.loginOrRegister {
+    font-size:30px;
+    text-align:center;
+}
+h2.confirmBooking{
+    font-size:50px;
+    padding-top: 300px;
+    text-align:center;
+}
+
+span.loginOrRegister {
+    background-color: rgba(240,248,255);
+}
 p {
- style="font-size:30px"}
+    font-size:20px;
+ }
+p.loginOrRegister {
+    font-size:25px;
+    text-align:left;
+}
+p.loginOrRegister2 {
+    font-size:25px;
+    text-align:right;
+}
+p.index {
+    font-size:18px;
+}
+body.loginOrRegister {
+    background-image: url('/images/loginOrRegister.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+body.login {
+    background-image: url('/images/login.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+body.register {
+    background-image: url('/images/register3.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+
+body.selectBookingDate {
+    background-image: url('/images/booking.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+body.selectBookingHour {
+    background-image: url('/images/bookingHour.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+
+body.bookingNotAvailable {
+    background-image: url('/images/bookingNotAvailable.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+body.confirmBooking {
+    background-image: url('/images/confirmBooking.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+
+body.infoBooking {
+    background-image: url('/images/infoBooking.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+
+body.contact {
+    background-image: url('/images/contact.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
+img.index{
+    width:840px;
+    height:600px;
+}
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+    background-color:rgba(240,248,255);
+}
+table.contact
+{
+    margin-left: 150px;
+    margin-top: 300px;
+    background-color:rgba(240,248,255);
+}
 
 li a {
   float: left;
@@ -23,7 +142,7 @@ ul {
 }
 
 li a:hover {
-  background-color: green;
+  background-color: red;
 }
 
 .myCenter {
@@ -39,7 +158,7 @@ li a:hover {
     }
 .column {
   float: left;
-  width: 33.3%;
+  width: 45%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -189,6 +308,7 @@ footer .copyright {
       font-weight: bold;
       width: 580px;
 }
+
 #contentColumn4{
     width: 600px;
     display: block;

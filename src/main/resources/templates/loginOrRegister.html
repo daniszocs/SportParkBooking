@@ -2,59 +2,53 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
-    <title>SportParkBooking - Login</title>
-</head>
-<body>
+    <head>
+        <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+        <title>SportParkBooking - Login</title>
+    </head>
+    <body class="loginOrRegister">
 
-<ul>
-    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
-    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
-    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
-    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
-    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
-    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
-</ul>
-<p><a th:href="@{'/selectPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a></p>
-<p><br/></p>
-<p><br/></p>
-<!--<img src="/images/loginOrRegister.jpg"-->
-<!--     th:attr="src=@{/images/loginOrRegister.jpg},title=#{loginOrRegister},alt=#{loginOrRegister}" />-->
+        <ul>
+            <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+            <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+            <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+            <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+            <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+            <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+        </ul>
+        <p class ="loginOrRegister">
+            <a th:href="@{'/selectPlayGround?sportName='+${sportName}}"><button>Back to Playgrounds</button></a>
+        </p>
+        <p class ="loginOrRegister2"> <b> <span class="loginOrRegister">  You don't have an account yet? No problem, create one now:  </span></span></b> <br>
+            <a th:href="@{'/register?playGroundName='+${playGroundName}}"><button>Register</button></a>
 
-<!--<p> <a th:href="@{'/login?playGroundName='+${playGroundName}}" th:text="Login"/></p>-->
-<p style="font-size:30px"> <b>Login to make booking: </b></p>
-<form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
-    <table border="1">
-        <tr>
-            <td><b>Email: </b></td>
-            <td><input type="email" th:field="*{userEmail}" /></td>
-        </tr>
-        <tr>
-            <td><b>Password: </b></td>
-            <td><input type="password" th:field="*{userPassword}" /></td>
-        </tr>
+        </p>
+        <p><br/></p>
+        <p><br/></p>
+        <!--<img src="/images/loginOrRegister.jpg"-->
+        <!--     th:attr="src=@{/images/loginOrRegister.jpg},title=#{loginOrRegister},alt=#{loginOrRegister}" />-->
 
-        <tr>
-            <td><input type="reset" value="Reset" /> </td>
-            <td><input type="submit" value="Start Booking" /></td>
+        <!--<p> <a th:href="@{'/login?playGroundName='+${playGroundName}}" th:text="Login"/></p>-->
+        <h2 class ="loginOrRegister"> Login to make booking:   </span></b></h2>
+        <form action="#" th:action="@{'/selectBookingDate?playGroundName='+${playGroundName}}" th:object="${user}" method="post">
+            <table border="1" >
+                <tr>
+                    <td><b>Email:         </b></td>
+                    <td><input type="email" th:field="*{userEmail}" /></td>
+                </tr>
+                <tr>
+                    <td><b>Password:      </b></td>
+                    <td><input type="password" th:field="*{userPassword}" /></td>
+                </tr>
 
-        </tr>
-        <style>
-                body {
-                  background-image: url('/images/loginOrRegister.jpg');
-                  width: auto;
-                  height: auto;
-                  background-repeat: no-repeat;
-                  background-size: 100%;
-                  background-position: center%;
-                }
-        </style>
+                <tr>
+                    <td> <center> <input type="reset"  value="    Reset    " /> </center> </td>
+                    <td> <center> <input type="submit" value="Start Booking" /> </center> </td>
 
-    </table>
-</form>
+                </tr>
 
-<p> <b>You don't have an account yet? No problem, create one now: </b></p>
-<p> <a th:href="@{'/register?playGroundName='+${playGroundName}}" th:text="Register"/></p>
-</body>
+
+            </table>
+        </form>
+    </body>
 </html>
