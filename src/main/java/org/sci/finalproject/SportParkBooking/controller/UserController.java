@@ -30,12 +30,12 @@ public class UserController {
 
     @GetMapping({"/loginOrRegister"})
     public String loginOrRegister(@RequestParam(value="playGroundName", required=false) String playGroundName,
-                                  @RequestParam(value="sportName", required=false) String sportName,
+//                                  @RequestParam(value="sportName", required=false) String sportName,
                                   Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
         model.addAttribute("playGroundName", playGroundName);
-        model.addAttribute("sportName", sportName);
+//        model.addAttribute("sportName", sportName);
         return "loginOrRegister";
     }
 
@@ -53,7 +53,17 @@ public class UserController {
         model.addAttribute("playGroundName", playGroundName);
         model.addAttribute("userID", user.getUserID());
         if (registerResult) {
-            return "selectBookingDate";
+            if (playGroundName.equals("null")) {
+                List<Sport> sportList = new ArrayList<>();
+                Iterable<Sport> iterableSport = sportService.findAll();
+                iterableSport.forEach(sportList::add);
+                model.addAttribute("mySportList", sportList);
+
+                return "index";
+            }
+            else{
+                return "selectBookingDate";
+            }
         } else {
             return "error";
         }
@@ -71,12 +81,39 @@ public class UserController {
     public String loginUser(@RequestParam(value="playGroundName", required=false) String playGroundName, @ModelAttribute("booking") Booking booking, @ModelAttribute("user") User user, BindingResult errors, Model model) {
         boolean loginResult = userService.login(user);
         model.addAttribute("playGroundName", playGroundName);
-        Long userID = userRepo.findByUserEmail(user.getUserEmail()).getUserID();
+        Long userID=(userRepo.findByUserEmail(user.getUserEmail()).getUserID());
+        user.setUserID(userID);
         model.addAttribute("userID", userID);
         if (loginResult) {
-            return "selectBookingDate";
+            if (playGroundName.equals("null")) {
+                List<Sport> sportList = new ArrayList<>();
+                Iterable<Sport> iterableSport = sportService.findAll();
+                iterableSport.forEach(sportList::add);
+                model.addAttribute("mySportList", sportList);
+
+                return "index";
+            }
+            else{
+                return "selectBookingDate";
+            }
         } else {
             return "error";
+        }
+    }
+
+    @RequestMapping(value = "/userAction")
+    public String loginUser(@RequestParam(value="userID", required=false) String userID,
+                             @RequestParam(value="playGroundName", required=false) String playGroundName, @ModelAttribute("booking") Booking booking, BindingResult errors, Model model) {
+
+        model.addAttribute("playGroundName", playGroundName);
+        model.addAttribute("userID", userID);
+
+        if (!userID.equals("null")) {
+            return "selectBookingDate";
+        } else {
+            User emptyUser = new User();
+            model.addAttribute("user", emptyUser);
+            return "loginOrRegister";
         }
     }
 }
