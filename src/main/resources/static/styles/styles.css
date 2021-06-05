@@ -119,15 +119,15 @@ table
 }
 table.contact
 {
-    margin-left: 150px;
-    margin-top: 300px;
-    background-color:rgba(240,248,255);
+    margin-left: 600px;
+    margin-top: 320px;
+    background-color:rgba(178,255,102);
 }
 
 li a {
   float: left;
   display: inline-block;
-  color: white;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -138,11 +138,11 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #1831FC;
+  background-color: #66CC00;
 }
 
 li a:hover {
-  background-color: red;
+  background-color: #E5FFCC;
 }
 
 .myCenter {
@@ -171,7 +171,7 @@ li a:hover {
 .about-section {
   padding: 50px;
   text-align: left;
-  background-color: #474e5d;
+  background-color: #46D750;
   color: white;
 }
 
@@ -211,12 +211,12 @@ ulFooter {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #474e5d;
+  background-color: #46D750;
   color: white;
 }
 
 footer .copyright {
-	background: #474e5d;
+	background: #46D750;
 	border-top: 2px solid #1e2730;
 	padding: 0 16px;
     color: white;
