@@ -223,6 +223,16 @@ footer .copyright {
 }
 
 #contentRow{
+    width: 1450px;
+    display: block;
+    height: auto;
+}
+#contentRowGallery{
+    width: 1900px;
+    display: block;
+    height: auto;
+}
+#contentRowGallery2{
     width: 1900px;
     display: block;
     height: auto;
@@ -242,11 +252,6 @@ footer .copyright {
 }
 #hrefContent4 {
      margin: 10px 215px;
-}
-#contentRow{
-    width: 1900px;
-    display: block;
-    height: auto;
 }
 #contentColumn1{
     width: 600px;
