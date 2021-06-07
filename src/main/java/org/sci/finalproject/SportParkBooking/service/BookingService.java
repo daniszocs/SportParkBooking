@@ -2,6 +2,8 @@ package org.sci.finalproject.SportParkBooking.service;
 
 import org.sci.finalproject.SportParkBooking.model.Booking;
 import org.sci.finalproject.SportParkBooking.model.BookingStatusEnum;
+import org.sci.finalproject.SportParkBooking.model.PlayGround;
+import org.sci.finalproject.SportParkBooking.model.Sport;
 import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,12 @@ public class BookingService {
         return false;
     }
 
+    public Iterable<Booking> findAll() {
+        return bookingRepo.findAll();
+    }
     // public void updateBookingStatus(BookingStatusEnum bookingStatus){}
 
+    public void deleteBooking(Booking bookingToDelete){
+        bookingRepo.delete(bookingToDelete);
+    }
 }

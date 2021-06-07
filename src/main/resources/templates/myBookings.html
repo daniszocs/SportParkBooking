@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../styles/styles.css" th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>SportParkBooking - My Bookings</title>
+</head>
+<body class="login">
+
+<ul>
+    <li><a  href="/templates/home.html"     th:href="@{/home}"> Home</a></li>
+    <li><a  href="/templates/login.html"    th:href="@{/login}"> Login</a></li>
+    <li><a  href="/templates/register.html" th:href="@{/register}"> Register</a></li>
+    <li><a  href="/templates/aboutUs.html"  th:href="@{/aboutUs}"> About us</a></li>
+    <li><a  href="/templates/gallery.html"  th:href="@{/gallery}"> Gallery</a></li>
+    <li><a  href="/templates/contact.html"  th:href="@{/contact}"> Contact</a></li>
+    <li><a  href="/templates/myBookings.html"  th:href="@{/myBookings}"> My Bookings</a></li>
+</ul>
+<p><br/></p>
+
+<!--  <img src="/images/login.jpg"
+       th:attr="src=@{/images/login.jpg},title=#{login},alt=#{login}" />-->
+<p><br/></p>
+<h2 class ="loginOrRegister"> <b>  Login user </b> </h2>
+
+<form action="#" th:action="@{/userBookings}" th:object="${user}" method="post">
+    <table border="1" class="loginOrRegister">
+        <tr >
+            <td><b>Email:</b></td>
+            <td><input type="email" th:field="*{userEmail}" /></td>
+        </tr>
+        <tr>
+            <td><b>Password:</b></td>
+            <td><input type="password" th:field="*{userPassword}" /></td>
+        </tr>
+
+        <tr>
+            <td> <center> <input type="reset" value="Reset" />  </center> </td>
+            <td> <center> <input type="submit" value="Submit" /> </center> </td>
+
+        </tr>
+    </table>
+</form>
+</body>
+</html>

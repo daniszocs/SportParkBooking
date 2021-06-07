@@ -1,8 +1,6 @@
 package org.sci.finalproject.SportParkBooking.controller;
 
-import org.sci.finalproject.SportParkBooking.model.Booking;
-import org.sci.finalproject.SportParkBooking.model.BookingStatusEnum;
-import org.sci.finalproject.SportParkBooking.model.User;
+import org.sci.finalproject.SportParkBooking.model.*;
 import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.sci.finalproject.SportParkBooking.repo.PlayGroundRepo;
 import org.sci.finalproject.SportParkBooking.repo.UserRepo;
@@ -19,6 +17,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -218,5 +217,68 @@ public class BookingController {
                 confirmBookingResult = confirmBookingResult && bookingService.saveNewBooking(oneBooking);
             }
         return "confirmBooking";
+    }
+
+    @RequestMapping("/myBookings")
+    public String myBookings(@ModelAttribute("user") User user,
+                             Model model) {
+        model.addAttribute("user", user);
+        return "myBookings";
+    }
+
+
+    @RequestMapping("/userBookings")
+    public String userBookings(@ModelAttribute("booking") Booking booking, @ModelAttribute("user") User user,
+                             @RequestParam(value="userID", required=false) Long userID,
+                                           Model model) {
+
+        List<Booking> bookingList = new ArrayList<>();
+        Iterable<Booking> iterableBooking = bookingService.findAll();
+
+        if (userID==null && userService.login(user)==true) {
+            userID = userRepo.findByUserEmail(user.getUserEmail()).getUserID();
+        }
+
+        Iterator<Booking> iterator = iterableBooking.iterator();
+        while (iterator.hasNext()) {
+            Booking element = iterator.next();
+            if (element.getUserID() == userID && userService.login(user)==true) {
+                bookingList.add(element);
+            }
+        }
+
+        model.addAttribute("myBookingList", bookingList);
+        model.addAttribute("userID", userID);
+
+        return "userBookings";
+    }
+
+
+    @RequestMapping("/cancelBooking")
+    public String cancelBooking(@ModelAttribute("booking") Booking booking,  @ModelAttribute("user") User user,
+                                @RequestParam(value="userID", required=false) Long userID,
+                               Model model) {
+
+        bookingService.deleteBooking(bookingRepo.findByBookingID(booking.getBookingID()));
+
+        List<Booking> bookingList = new ArrayList<>();
+        Iterable<Booking> iterableBooking = bookingService.findAll();
+
+        if (userID==null && userService.login(user)==true) {
+            userID = bookingRepo.findByBookingID(booking.getBookingID()).getUserID();
+        }
+
+        Iterator<Booking> iterator = iterableBooking.iterator();
+        while (iterator.hasNext()) {
+            Booking element = iterator.next();
+            if (element.getUserID() == userID) {
+                bookingList.add(element);
+            }
+        }
+
+        model.addAttribute("myBookingList", bookingList);
+        model.addAttribute("userID", userID);
+
+        return "userBookings";
     }
 }

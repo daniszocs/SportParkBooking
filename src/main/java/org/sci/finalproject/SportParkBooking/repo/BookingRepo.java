@@ -9,5 +9,6 @@ public interface BookingRepo extends CrudRepository<Booking, Long> {
 
     public Booking findByBookingSignature(String bookingSignature);
     public Booking findByBookingID(Long bookingID);
+    public Booking findByUserID(Long userID);
 
 }
