@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -229,56 +230,39 @@ public class BookingController {
 
     @RequestMapping("/userBookings")
     public String userBookings(@ModelAttribute("booking") Booking booking, @ModelAttribute("user") User user,
-                             @RequestParam(value="userID", required=false) Long userID,
-                                           Model model) {
+                               Model model) {
 
         List<Booking> bookingList = new ArrayList<>();
         Iterable<Booking> iterableBooking = bookingService.findAll();
 
-        if (userID==null && userService.login(user)==true) {
-            userID = userRepo.findByUserEmail(user.getUserEmail()).getUserID();
-        }
-
         Iterator<Booking> iterator = iterableBooking.iterator();
         while (iterator.hasNext()) {
             Booking element = iterator.next();
-            if (element.getUserID() == userID && userService.login(user)==true) {
+            if (userService.login(user)==true) {
                 bookingList.add(element);
             }
         }
 
+        model.addAttribute("userID", userRepo.findByUserEmail(user.getUserEmail()).getUserID());
         model.addAttribute("myBookingList", bookingList);
-        model.addAttribute("userID", userID);
 
         return "userBookings";
     }
 
 
     @RequestMapping("/cancelBooking")
-    public String cancelBooking(@ModelAttribute("booking") Booking booking,  @ModelAttribute("user") User user,
-                                @RequestParam(value="userID", required=false) Long userID,
-                               Model model) {
+    public ModelAndView cancelBooking(@ModelAttribute("booking") Booking booking,
+                                      @ModelAttribute("user") User user,
+                                      @RequestParam(value="userID", required=false) Long userID,
+                                      Model model) {
 
         bookingService.deleteBooking(bookingRepo.findByBookingID(booking.getBookingID()));
 
-        List<Booking> bookingList = new ArrayList<>();
-        Iterable<Booking> iterableBooking = bookingService.findAll();
-
-        if (userID==null && userService.login(user)==true) {
-            userID = bookingRepo.findByBookingID(booking.getBookingID()).getUserID();
-        }
-
-        Iterator<Booking> iterator = iterableBooking.iterator();
-        while (iterator.hasNext()) {
-            Booking element = iterator.next();
-            if (element.getUserID() == userID) {
-                bookingList.add(element);
-            }
-        }
-
-        model.addAttribute("myBookingList", bookingList);
-        model.addAttribute("userID", userID);
-
-        return "userBookings";
+        ModelAndView mv = new ModelAndView("redirect:/userBookings");
+        user.setUserEmail(userRepo.findByUserID(userID).getUserEmail());
+        user.setUserPassword(userRepo.findByUserID(userID).getUserPassword());
+        mv.addObject("userEmail", user.getUserEmail());
+        mv.addObject("userPassword", user.getUserPassword());
+        return mv;
     }
 }
