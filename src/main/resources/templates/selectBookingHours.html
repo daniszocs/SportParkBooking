@@ -31,7 +31,8 @@
                     <p hidden>Please make booking one hour at a time.</p>
                     <tr>
                         <td>Time:</td>
-                        <td><input type="time" min="09:00" max="22:00" step=3600 value="09:00" th:field="*{{bookingHour}}"/><small> Open 9am to 10pm. </small></td>
+                        <td><input type="time" name="limittime" list="limittimeslist" step="3600" th:field="*{{bookingHour}}"><small> Open 9am to 10pm. </small></td>
+<!--                        <td><input type="time" min="09:00" max="22:00" step=3600000 th:field="*{{bookingHour}}"/><small> Open 9am to 10pm. </small></td>-->
                     </tr>
                     <tr>
                         <td>Booking duration (h):</td>
@@ -43,7 +44,24 @@
                     </tr>
                 </table>
             </form>
+            <datalist id="limittimeslist">
 
+                <option value="09:00">
+                <option value="10:00">
+                <option value="11:00">
+                <option value="12:00">
+                <option value="13:00">
+                <option value="14:00">
+                <option value="15:00">
+                <option value="16:00">
+                <option value="17:00">
+                <option value="18:00">
+                <option value="19:00">
+                <option value="20:00">
+                <option value="21:00">
+                <option value="22:00">
+
+            </datalist>
         </div>
     </body>
 </html>
