@@ -27,6 +27,9 @@ public class PlayGroundService {
     public Long returnPlayGroundID(String playGroundName){
         return playGroundRepo.findByPlayGroundName(playGroundName).getPlayGroundID();
     }
+    public String returnPlayGroundName(Long playGroundID){
+        return playGroundRepo.findByPlayGroundID(playGroundID).getPlayGroundName();
+    }
 
     public int returnPricePerHour(String playGroundName){
         return playGroundRepo.findByPlayGroundName(playGroundName).getPricePerHour();

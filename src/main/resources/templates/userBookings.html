@@ -31,18 +31,18 @@
         <h1>Booking Price</h1>
     </div>
     <div class="columnUserBooking">
-        <h1>PlayGround ID</h1>
+        <h1>PlayGround Name</h1>
     </div>
     <div class="columnUserBooking">
         <h1></h1>
     </div>
 </div>
 
-<div th:if="${#lists.isEmpty(myBookingList)}">
+<div th:if="${#lists.isEmpty(myBookingList)}" >
     <p>No bookings available</p>
 </div>
-<div th:unless="${#lists.isEmpty(myBookingList)}">
-    <div class="row" th:each="booking: ${myBookingList}" >
+<div th:unless="${#lists.isEmpty(myBookingList)}" >
+    <div class="row" th:each="booking: ${myBookingList}" th:if="${userID==booking.userID}">
         <div class="columnUserBooking">
             <p>[[${booking.bookingDate}]]</p>
         </div>
@@ -55,8 +55,8 @@
         <div class="columnUserBooking">
             <p>[[${booking.bookingPrice}]]</p>
         </div>
-        <div class="columnUserBooking">
-            <p>[[${booking.playGroundID}]]</p>
+        <div class="columnUserBooking" th:each="playGround: ${myPlayGroundList}" th:if="${playGround.playGroundID==booking.playGroundID}" >
+            <p>[[${playGround.playGroundName}]]</p>
         </div>
         <div class="columnUserBooking">
             <a th:href="@{'/cancelBooking?bookingID='+${booking.bookingID}+'&userID='+${userID}}"><button>Delete</button></a>

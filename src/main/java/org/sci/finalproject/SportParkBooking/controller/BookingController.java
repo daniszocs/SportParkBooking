@@ -5,6 +5,7 @@ import org.sci.finalproject.SportParkBooking.repo.BookingRepo;
 import org.sci.finalproject.SportParkBooking.repo.PlayGroundRepo;
 import org.sci.finalproject.SportParkBooking.repo.UserRepo;
 import org.sci.finalproject.SportParkBooking.service.BookingService;
+import org.sci.finalproject.SportParkBooking.service.PlayGroundService;
 import org.sci.finalproject.SportParkBooking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class BookingController {
     private UserService userService;
     @Autowired
     private PlayGroundRepo playGroundRepo;
+    @Autowired
+    private PlayGroundService playGroundService;
     @Autowired
     private UserRepo userRepo;
     @Autowired
@@ -233,18 +236,43 @@ public class BookingController {
                                Model model) {
 
         List<Booking> bookingList = new ArrayList<>();
+        List<PlayGround> playGroundList = new ArrayList<>();
+//        List<Date> bookingDateList = new ArrayList<>();
+//        List<String> bookingHourList = new ArrayList<>();
+//        List<Integer> bookingDurationList = new ArrayList<>();
+//        List<Integer> bookingPriceList = new ArrayList<>();
+//        List<String> bookingSportList = new ArrayList<>();
         Iterable<Booking> iterableBooking = bookingService.findAll();
+        Iterable<PlayGround> iterablePlayGround = playGroundService.findAll();
 
         Iterator<Booking> iterator = iterableBooking.iterator();
         while (iterator.hasNext()) {
             Booking element = iterator.next();
-            if (userService.login(user)==true) {
+            if (userService.login(user)==true && userRepo.findByUserEmail(user.getUserEmail()).getUserID()==element.getUserID()) {
                 bookingList.add(element);
+//                bookingDateList.add(element.getBookingDate());
+//                bookingHourList.add(element.getBookingHour());
+//                bookingDurationList.add(element.getBookingDuration());
+//                bookingPriceList.add(element.getBookingPrice());
+//                bookingSportList.add(playGroundService.returnPlayGroundName(element.getBookingID()));
             }
         }
 
+        Iterator<PlayGround> iterator2 = iterablePlayGround.iterator();
+        while (iterator2.hasNext()) {
+            PlayGround element2 = iterator2.next();
+            if (userService.login(user)==true) {
+                playGroundList.add(element2);
+            }
+        }
         model.addAttribute("userID", userRepo.findByUserEmail(user.getUserEmail()).getUserID());
         model.addAttribute("myBookingList", bookingList);
+        model.addAttribute("myPlayGroundList", playGroundList);
+//        model.addAttribute("myBookingDateList", bookingDateList);
+//        model.addAttribute("myBookingHourList", bookingHourList);
+//        model.addAttribute("myBookingDurationList", bookingDurationList);
+//        model.addAttribute("myBookingPriceList", bookingPriceList);
+//        model.addAttribute("myBookingSportList", bookingSportList);
 
         return "userBookings";
     }
