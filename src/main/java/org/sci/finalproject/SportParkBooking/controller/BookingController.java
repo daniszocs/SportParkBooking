@@ -165,9 +165,9 @@ public class BookingController {
         //create booked Hours list
         List hoursBookedList = new ArrayList<String>();
         boolean isBooked = false;
-        //java.sql.Timestamp.valueOf("2021.05.23 09:00:00");
         String bookingDateString = booking.getBookingDate().toString();
         String bookingHourString = booking.getBookingHour();
+        //java.sql.Timestamp.valueOf("2021.05.23 09:00:00");
         Timestamp bookingHourTimeStampStart = java.sql.Timestamp.valueOf(booking.getBookingDate().toString() + " " + booking.getBookingHour() + ":00");
         for (int i = 1; i <= booking.getBookingDuration(); i++) {
 
@@ -249,42 +249,48 @@ public class BookingController {
 
     @RequestMapping("/userBookings")
     public String userBookings(@ModelAttribute("booking") Booking booking, @ModelAttribute("user") User user,
+                               @RequestParam(value="userID", required=false) Long userID,
                                Model model) {
 
         List<Booking> bookingList = new ArrayList<>();
         List<PlayGround> playGroundList = new ArrayList<>();
-        List<Boolean> timeIsNotExpiredList = new ArrayList<>();
         Iterable<Booking> iterableBooking = bookingService.findAll();
         Iterable<PlayGround> iterablePlayGround = playGroundService.findAll();
 
-        Iterator<Booking> iterator = iterableBooking.iterator();
-        while (iterator.hasNext()) {
-            Booking element = iterator.next();
-            if (userService.login(user)==true && userRepo.findByUserEmail(user.getUserEmail()).getUserID()==element.getUserID()) {
-                bookingList.add(element);
+        if (userID==null && userService.login(user)==true) {
+            userID = userRepo.findByUserEmail(user.getUserEmail()).getUserID();
+        }
+        user.setUserEmail(userRepo.findByUserID(userID).getUserEmail());
+        user.setUserPassword(userRepo.findByUserID(userID).getUserPassword());
+
+        Iterator<Booking> iteratorBooking = iterableBooking.iterator();
+        while (iteratorBooking.hasNext()) {
+            Booking elementBooking = iteratorBooking.next();
+            if (userService.login(user)==true && userID==elementBooking.getUserID()) {
+                bookingList.add(elementBooking);
             }
 
-            Timestamp dateBooking = java.sql.Timestamp.valueOf(element.getBookingDate().toString() + " " + element.getBookingHour() + ":00");
+            Timestamp dateBooking = java.sql.Timestamp.valueOf(elementBooking.getBookingDate().toString() + " " + elementBooking.getBookingHour() + ":00");
             java.util.Date dateNow = new java.util.Date();
             Boolean isBookingExpired = dateBooking.before(dateNow);
             if (isBookingExpired){
-                element.setBookingStatus(BookingStatusEnum.FINALIZED.name());
-                bookingService.setBookingStatus(bookingRepo.findByBookingID(element.getBookingID()),BookingStatusEnum.FINALIZED.name());
+                elementBooking.setBookingStatus(BookingStatusEnum.FINALIZED.name());
+                bookingService.setBookingStatus(bookingRepo.findByBookingID(elementBooking.getBookingID()),BookingStatusEnum.FINALIZED.name());
             }
         }
 
-        Iterator<PlayGround> iterator2 = iterablePlayGround.iterator();
-        while (iterator2.hasNext()) {
-            PlayGround element2 = iterator2.next();
+        Iterator<PlayGround> iteratorPlayGround = iterablePlayGround.iterator();
+        while (iteratorPlayGround.hasNext()) {
+            PlayGround elementPlayGround = iteratorPlayGround.next();
             if (userService.login(user)==true) {
-                playGroundList.add(element2);
+                playGroundList.add(elementPlayGround);
             }
         }
 
 
         java.util.Date dateNow = new java.util.Date();
 
-        model.addAttribute("userID", userRepo.findByUserEmail(user.getUserEmail()).getUserID());
+        model.addAttribute("userID", userID);
         model.addAttribute("myBookingList", bookingList);
         model.addAttribute("myPlayGroundList", playGroundList);
         model.addAttribute("dateNow", dateNow);
@@ -299,14 +305,10 @@ public class BookingController {
                                       @RequestParam(value="userID", required=false) Long userID,
                                       Model model) {
 
-//        bookingService.deleteBooking(bookingRepo.findByBookingID(booking.getBookingID()));
         bookingService.setBookingStatus(bookingRepo.findByBookingID(booking.getBookingID()), BookingStatusEnum.CANCELED.name());
 
         ModelAndView mv = new ModelAndView("redirect:/userBookings");
-        user.setUserEmail(userRepo.findByUserID(userID).getUserEmail());
-        user.setUserPassword(userRepo.findByUserID(userID).getUserPassword());
-        mv.addObject("userEmail", user.getUserEmail());
-        mv.addObject("userPassword", user.getUserPassword());
+        mv.addObject("userID", userID);
         return mv;
     }
 }
