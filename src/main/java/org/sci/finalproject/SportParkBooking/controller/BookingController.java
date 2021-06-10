@@ -81,47 +81,63 @@ public class BookingController {
         Long playGroundID = (playGroundRepo.findByPlayGroundName(playGroundName)).getPlayGroundID();
         booking.setPlayGroundID(playGroundID);
 
+        java.util.Date dateNow = new java.util.Date();
+
         List hourAvailableList = new ArrayList<String>();
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "09:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "09:00" + "_" + playGroundID) == null
+            && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"09:00" + ":00").after(dateNow)) {
             hourAvailableList.add("09:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "10:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "10:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"10:00" + ":00").after(dateNow)) {
             hourAvailableList.add("10:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "11:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "11:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"11:00" + ":00").after(dateNow)) {
             hourAvailableList.add("11:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "12:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "12:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"12:00" + ":00").after(dateNow)) {
             hourAvailableList.add("12:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "13:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "13:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"13:00" + ":00").after(dateNow)) {
             hourAvailableList.add("13:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "14:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "14:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"14:00" + ":00").after(dateNow)) {
             hourAvailableList.add("14:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "15:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "15:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"15:00" + ":00").after(dateNow)) {
             hourAvailableList.add("15:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "16:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "16:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"16:00" + ":00").after(dateNow)) {
             hourAvailableList.add("16:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "17:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "17:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"17:00" + ":00").after(dateNow)) {
             hourAvailableList.add("17:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "18:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "18:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"18:00" + ":00").after(dateNow)) {
             hourAvailableList.add("18:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "19:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "19:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"19:00" + ":00").after(dateNow)) {
             hourAvailableList.add("19:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "20:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "20:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"20:00" + ":00").after(dateNow)) {
             hourAvailableList.add("20:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "21:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "21:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"21:00" + ":00").after(dateNow)) {
             hourAvailableList.add("21:00");
         }
-        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "22:00" + "_" + playGroundID) == null) {
+        if (bookingRepo.findByBookingSignature(booking.getBookingDate() + "_" + "22:00" + "_" + playGroundID) == null
+                && java.sql.Timestamp.valueOf(booking.getBookingDate() + " " +"22:00" + ":00").after(dateNow)) {
             hourAvailableList.add("22:00");
         }
         if (hourAvailableList.size()==0){
