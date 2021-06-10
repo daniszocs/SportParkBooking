@@ -32,6 +32,11 @@ public class BookingService {
         return false;
     }
 
+    public void setBookingStatus(Booking bookingToEdit, String bookingStatus){
+        bookingToEdit.setBookingStatus(bookingStatus);
+        bookingRepo.save(bookingToEdit);
+    }
+
     public Iterable<Booking> findAll() {
         return bookingRepo.findAll();
     }

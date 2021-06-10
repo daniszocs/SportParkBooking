@@ -19,22 +19,25 @@
 
 <div class="row">
     <div class="columnUserBooking">
-        <h1>Booking Date</h1>
+        <h2>Booking Date</h2>
     </div>
     <div class="columnUserBooking">
-        <h1>Booking Hour</h1>
+        <h2>Booking Hour</h2>
     </div>
     <div class="columnUserBooking">
-        <h1>Booking Duration</h1>
+        <h2>Booking Duration</h2>
     </div>
     <div class="columnUserBooking">
-        <h1>Booking Price</h1>
+        <h2>Booking Price</h2>
     </div>
     <div class="columnUserBooking">
-        <h1>PlayGround Name</h1>
+        <h2>Booking Status</h2>
     </div>
     <div class="columnUserBooking">
-        <h1></h1>
+        <h2>PlayGround Name</h2>
+    </div>
+    <div class="columnUserBooking">
+        <h2></h2>
     </div>
 </div>
 
@@ -55,11 +58,15 @@
         <div class="columnUserBooking">
             <p>[[${booking.bookingPrice}]]</p>
         </div>
+        <div class="columnUserBooking">
+            <p>[[${booking.bookingStatus}]]</p>
+        </div>
         <div class="columnUserBooking" th:each="playGround: ${myPlayGroundList}" th:if="${playGround.playGroundID==booking.playGroundID}" >
             <p>[[${playGround.playGroundName}]]</p>
         </div>
         <div class="columnUserBooking">
-            <a th:href="@{'/cancelBooking?bookingID='+${booking.bookingID}+'&userID='+${userID}}"><button>Delete</button></a>
+            <a th:href="@{'/cancelBooking?bookingID='+${booking.bookingID}+'&userID='+${userID}}"
+            th:if="${booking.bookingStatus=='ACTIVE'}"><button>Delete</button></a>
         </div>
     </div>
 </div>

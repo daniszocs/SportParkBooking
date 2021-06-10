@@ -237,11 +237,7 @@ public class BookingController {
 
         List<Booking> bookingList = new ArrayList<>();
         List<PlayGround> playGroundList = new ArrayList<>();
-//        List<Date> bookingDateList = new ArrayList<>();
-//        List<String> bookingHourList = new ArrayList<>();
-//        List<Integer> bookingDurationList = new ArrayList<>();
-//        List<Integer> bookingPriceList = new ArrayList<>();
-//        List<String> bookingSportList = new ArrayList<>();
+        List<Boolean> timeIsNotExpiredList = new ArrayList<>();
         Iterable<Booking> iterableBooking = bookingService.findAll();
         Iterable<PlayGround> iterablePlayGround = playGroundService.findAll();
 
@@ -250,11 +246,14 @@ public class BookingController {
             Booking element = iterator.next();
             if (userService.login(user)==true && userRepo.findByUserEmail(user.getUserEmail()).getUserID()==element.getUserID()) {
                 bookingList.add(element);
-//                bookingDateList.add(element.getBookingDate());
-//                bookingHourList.add(element.getBookingHour());
-//                bookingDurationList.add(element.getBookingDuration());
-//                bookingPriceList.add(element.getBookingPrice());
-//                bookingSportList.add(playGroundService.returnPlayGroundName(element.getBookingID()));
+            }
+
+            Timestamp dateBooking = java.sql.Timestamp.valueOf(element.getBookingDate().toString() + " " + element.getBookingHour() + ":00");
+            java.util.Date dateNow = new java.util.Date();
+            Boolean isBookingExpired = dateBooking.before(dateNow);
+            if (isBookingExpired){
+                element.setBookingStatus(BookingStatusEnum.FINALIZED.name());
+                bookingService.setBookingStatus(bookingRepo.findByBookingID(element.getBookingID()),BookingStatusEnum.FINALIZED.name());
             }
         }
 
@@ -265,14 +264,14 @@ public class BookingController {
                 playGroundList.add(element2);
             }
         }
+
+
+        java.util.Date dateNow = new java.util.Date();
+
         model.addAttribute("userID", userRepo.findByUserEmail(user.getUserEmail()).getUserID());
         model.addAttribute("myBookingList", bookingList);
         model.addAttribute("myPlayGroundList", playGroundList);
-//        model.addAttribute("myBookingDateList", bookingDateList);
-//        model.addAttribute("myBookingHourList", bookingHourList);
-//        model.addAttribute("myBookingDurationList", bookingDurationList);
-//        model.addAttribute("myBookingPriceList", bookingPriceList);
-//        model.addAttribute("myBookingSportList", bookingSportList);
+        model.addAttribute("dateNow", dateNow);
 
         return "userBookings";
     }
@@ -284,7 +283,8 @@ public class BookingController {
                                       @RequestParam(value="userID", required=false) Long userID,
                                       Model model) {
 
-        bookingService.deleteBooking(bookingRepo.findByBookingID(booking.getBookingID()));
+//        bookingService.deleteBooking(bookingRepo.findByBookingID(booking.getBookingID()));
+        bookingService.setBookingStatus(bookingRepo.findByBookingID(booking.getBookingID()), BookingStatusEnum.CANCELED.name());
 
         ModelAndView mv = new ModelAndView("redirect:/userBookings");
         user.setUserEmail(userRepo.findByUserID(userID).getUserEmail());
