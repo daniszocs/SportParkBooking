@@ -98,6 +98,14 @@ body.infoBooking {
     background-size: 100%;
     background-position: center%;
 }
+body.userBookings {
+    background-image: url('/images/myBookings.jpg');
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center%;
+}
 
 body.contact {
     background-image: url('/images/contact.jpg');
@@ -177,7 +185,7 @@ li a:hover {
 .about-section {
   padding: 50px;
   text-align: left;
-  background-color: #46D750;
+  background-color: #469c4c;
   color: white;
 }
 
@@ -222,7 +230,7 @@ ulFooter {
 }
 
 footer .copyright {
-	background: #46D750;
+	background: #469c4c;
 	border-top: 2px solid #1e2730;
 	padding: 0 16px;
     color: white;
