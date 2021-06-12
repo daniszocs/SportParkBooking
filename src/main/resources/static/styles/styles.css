@@ -369,3 +369,64 @@ footer .copyright {
       font-weight: bold;
       width: 580px;
 }
+
+#contentColumn6{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn6 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn6 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn6 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+#contentColumn7{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn7 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn7 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn7 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
+#contentColumn8{
+    width: 600px;
+    display: block;
+    height: auto;
+}
+#contentColumn8 > img{
+    float: left;
+    width: 600px;
+    height: 400px;
+    margin: 5px 8px;
+}
+#contentColumn8 > p{
+     width: 520px;
+     margin: 5px 8px;
+}
+#contentColumn8 > h2{
+      margin-left: 5px;
+      font-weight: bold;
+      width: 580px;
+}
