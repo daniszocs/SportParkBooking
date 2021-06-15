@@ -21,7 +21,7 @@
     <div class="column" th:each="playGround: ${myPlayGroundList}" >
         <a th:href ="'userAction?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}+'&userID='+${userID}"><img th:src="'/images/'+${playGround.playGroundName}+'.jpg'" th:alt="${playGround.playGroundName}" style="width:100%" height="400"></a>
         <div class="container">
-            <h2><a th:href="'userAction?playGroundName='+${playGround.playGroundName}+'&userID='+${userID}">[[${playGround.playGroundName}]]</a></h2>
+            <h2><a th:href="'userAction?playGroundName='+${playGround.playGroundName}+'&sportName='+${sportName}+'&userID='+${userID}">[[${playGround.playGroundName}]]</a></h2>
             <h3>Price per hour: [[${playGround.pricePerHour}]] RON </h3>
             <h3>Location: [[${playGround.playGroundAddress}]]</h3>
             <p>[[${playGround.playGroundDescription}]]</p>
